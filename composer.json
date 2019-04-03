@@ -3,7 +3,7 @@
     "description": "Analytics module for Platform",
     "type": "package",
     "require": {
-        "humanmade/hm-gtm": "^1.1"
+        "humanmade/hm-gtm": "1.1.0"
     },
     "license": "GPL-3.0",
     "authors": [
@@ -11,5 +11,10 @@
             "name": "Human Made Limited",
             "email": "hello@humanmade.com"
         }
-    ]
+    ],
+    "autoload": {
+        "files": [
+            "load.php"
+        ]
+    }
 }
