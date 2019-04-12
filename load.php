@@ -5,7 +5,7 @@
  * @package hm-platform/analytics
  */
 
-namespace HM\Platform\Workflow;
+namespace HM\Platform\Analytics;
 
 use const HM\Platform\ROOT_DIR;
 use HM\Platform\Module;
