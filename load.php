@@ -1,44 +1,23 @@
 <?php
 /**
- * Analytics Module functions.
+ * Analytics Module.
  *
  * @package hm-platform/analytics
  */
 
 namespace HM\Platform\Analytics;
 
-use const HM\Platform\ROOT_DIR;
-use HM\Platform\Module;
+use function HM\Platform\register_module;
 
-function bootstrap( Module $module ) {
-	$settings = $module->get_settings();
+require_once __DIR__ . '/inc/namespace.php';
 
-	if ( $settings['google-tag-manager'] ) {
-		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_gtm' );
-		configure_gtm( $settings['google-tag-manager'] );
-	}
-}
-
-function load_gtm() {
-	require_once ROOT_DIR . '/vendor/humanmade/hm-gtm/hm-gtm.php';
-}
-
-/**
- * Filter the tag manager container IDs.
- *
- * @param array $settings
- * @return void
- */
-function configure_gtm( array $settings ) {
-	add_filter( 'hm_gtm_id', function ( string $id ) use ( $settings ) : string {
-		if ( ! empty( $settings['sites'] ) && is_array( $settings['sites'] ) ) {
-			$id = $settings['sites'][ $_SERVER['HTTP_HOST'] ] ?? $id;
-		}
-
-		return $id;
-	} );
-
-	add_filter( 'hm_gtm_network_id', function ( string $id ) use ( $settings ) : string {
-		return $settings['network'] ?? $id;
-	} );
-}
+add_action( 'hm-platform.modules.init', function () {
+	$default_settings = [
+		'enabled' => true,
+		'google-tag-manager' => [
+			'network' => '',
+			'sites' => [],
+		],
+	];
+	register_module( 'analytics', __DIR__, 'Analytics', $default_settings, __NAMESPACE__ . '\\bootstrap' );
+} );
