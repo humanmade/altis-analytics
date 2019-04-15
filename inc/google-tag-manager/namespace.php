@@ -16,19 +16,21 @@ use HM_GTM\Plugin;
 function bootstrap() {
 	$config = get_config();
 
-	$plugin = Plugin::get_instance();
-
 	// Set network container ID and remove admin.
 	if ( $config['network'] ) {
 		add_filter( 'hm_gtm_network_id', __NAMESPACE__ . '\\filter_network_container_id' );
-		remove_action( 'wpmu_options', [ $plugin, 'show_network_settings' ] );
+		remove_action( 'wpmu_options', 'HM\\GTM\\add_network_settings' );
 	}
 
 	// Set site container ID and remove admin.
 	if ( $config['sites'][ $_SERVER['HTTP_HOST'] ] ?? false ) {
 		add_filter( 'hm_gtm_id', __NAMESPACE__ . '\\filter_site_container_id' );
-		remove_action( 'admin_init', [ $plugin, 'action_admin_init' ] );
+		remove_action( 'admin_init', 'HM\\GTM\\add_site_settings' );
 	}
+
+	// Toggle custom event tracking.
+	$event_tracking_callback = ( $config['event-tracking'] ?? true ) ? '__return_true' : '__return_false';
+	add_filter( 'hm_gtm_enable_event_tracking', $event_tracking_callback );
 }
 
 /**

@@ -27,7 +27,7 @@ function bootstrap( Module $module ) {
  * Loads Google Tag Manager plugin and related code.
  */
 function load_google_tag_manager() {
-	require_once ROOT_DIR . '/vendor/humanmade/hm-gtm/hm-gtm.php';
+	require_once ROOT_DIR . '/vendor/humanmade/hm-gtm/plugin.php';
 	require_once __DIR__ . '/google-tag-manager/namespace.php';
 	Google_Tag_Manager\bootstrap();
 }
