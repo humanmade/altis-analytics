@@ -3,6 +3,7 @@
     "description": "Analytics module for Platform",
     "type": "package",
     "require": {
+        "php": ">=7.1",
         "humanmade/hm-gtm": "2.0.0"
     },
     "license": "GPL-2.0",
