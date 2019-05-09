@@ -78,7 +78,7 @@ This feature can be toggled via your `composer.json` by setting the `event-track
 ```json
 {
 	"extra": {
-		"platform": {
+		"altis": {
 			"modules": {
 				"analytics": {
 					"google-tag-manager": {

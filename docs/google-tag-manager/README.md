@@ -5,7 +5,7 @@ Configure the container IDs at a network and per site level by following the bel
 ```json
 {
 	"extra": {
-		"platform": {
+		"altis": {
 			"modules": {
 				"analytics": {
 					"enabled": true,
