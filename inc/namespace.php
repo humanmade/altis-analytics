@@ -2,13 +2,13 @@
 /**
  * Analytics Module functions.
  *
- * @package hm-platform/analytics
+ * @package altis/analytics
  */
 
-namespace HM\Platform\Analytics;
+namespace Altis\Analytics;
 
-use const HM\Platform\ROOT_DIR;
-use HM\Platform\Module;
+use const Altis\ROOT_DIR;
+use Altis\Module;
 
 /**
  * Setup function for the anlaytics module.

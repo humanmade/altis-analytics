@@ -2,12 +2,12 @@
 /**
  * Analytics Module.
  *
- * @package hm-platform/analytics
+ * @package altis/analytics
  */
 
-namespace HM\Platform\Analytics;
+namespace Altis\Analytics;
 
-use function HM\Platform\register_module;
+use function Altis\register_module;
 
 require_once __DIR__ . '/inc/namespace.php';
 
@@ -16,7 +16,7 @@ if ( ! function_exists( 'add_action' ) ) {
 	return;
 }
 
-add_action( 'hm-platform.modules.init', function () {
+add_action( 'altis.modules.init', function () {
 	$default_settings = [
 		'enabled' => true,
 		'google-tag-manager' => [

@@ -1,6 +1,6 @@
 {
     "name": "humanmade/analytics",
-    "description": "Analytics module for Platform",
+    "description": "Analytics module for Altis",
     "type": "package",
     "require": {
         "php": ">=7.1",

@@ -2,7 +2,7 @@
 	<tr>
 		<td align="left" width="70">
 			<strong>Analytics</strong><br />
-			Analytics module for Platform.
+			Analytics module for Altis.
 		</td>
 		<td align="right" width="20%">
 		</td>
@@ -19,4 +19,4 @@
 
 # Analytics
 
-Analytics integrations and features for Platform.
+Analytics integrations and features for Altis.

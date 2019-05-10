@@ -2,12 +2,12 @@
 /**
  * Google Tag Manager configuration.
  *
- * @package hm-platform/analytics
+ * @package altis/analytics
  */
 
-namespace HM\Platform\Analytics\Google_Tag_Manager;
+namespace Altis\Analytics\Google_Tag_Manager;
 
-use function HM\Platform\get_config as get_platform_config;
+use function Altis\get_config as get_platform_config;
 use HM_GTM\Plugin;
 
 /**
@@ -34,7 +34,7 @@ function bootstrap() {
 }
 
 /**
- * Gets the tag manager related part of the full platform config.
+ * Gets the tag manager related part of the full altis config.
  *
  * @return array
  */
