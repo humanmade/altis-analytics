@@ -19,7 +19,7 @@ function bootstrap( Module $module ) {
 	$settings = $module->get_settings();
 
 	if ( $settings['google-tag-manager'] ) {
-		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_google_tag_manager' );
+		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_google_tag_manager', 0 );
 	}
 }
 
