@@ -1,5 +1,5 @@
 {
-    "name": "humanmade/analytics",
+    "name": "altis/analytics",
     "description": "Analytics module for Altis",
     "type": "package",
     "require": {
