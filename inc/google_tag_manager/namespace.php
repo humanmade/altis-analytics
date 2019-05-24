@@ -8,7 +8,6 @@
 namespace Altis\Analytics\Google_Tag_Manager;
 
 use function Altis\get_config as get_platform_config;
-use HM_GTM\Plugin;
 
 /**
  * Set up Google Tag Manager plugin filters based on config.

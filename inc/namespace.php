@@ -7,8 +7,8 @@
 
 namespace Altis\Analytics;
 
-use const Altis\ROOT_DIR;
 use Altis\Module;
+use const Altis\ROOT_DIR;
 
 /**
  * Setup function for the anlaytics module.
@@ -28,6 +28,6 @@ function bootstrap( Module $module ) {
  */
 function load_google_tag_manager() {
 	require_once ROOT_DIR . '/vendor/humanmade/hm-gtm/plugin.php';
-	require_once __DIR__ . '/google-tag-manager/namespace.php';
+	require_once __DIR__ . '/google_tag_manager/namespace.php';
 	Google_Tag_Manager\bootstrap();
 }
