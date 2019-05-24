@@ -5,7 +5,7 @@
  * @package altis/analytics
  */
 
-namespace Altis\Analytics;
+namespace Altis\Analytics; // @codingStandardsIgnoreLine
 
 use function Altis\register_module;
 
