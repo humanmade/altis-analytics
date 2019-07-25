@@ -9,6 +9,7 @@ namespace Altis\Analytics;
 
 use Altis\Module;
 use const Altis\ROOT_DIR;
+use function Altis\Enhanced_Search\get_elasticsearch_url;
 
 /**
  * Setup function for the anlaytics module.
@@ -21,6 +22,11 @@ function bootstrap( Module $module ) {
 	if ( $settings['google-tag-manager'] ) {
 		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_google_tag_manager', 0 );
 	}
+
+	// Set Analytics plugin to use core instance.
+	add_filter( 'altis.analytics.elasticsearch.url', function () {
+		return get_elasticsearch_url();
+	} );
 }
 
 /**
