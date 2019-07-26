@@ -9,7 +9,7 @@ The AB testing feature is enabled by default and provides a developer API for cr
 - Tests run until the end date or when a statistically significant improvement has been found
 - When a winner is found the winning variant will be shown to everyone
 
-The plugin currently provides the following built in features:
+The following built in tests are provided:
 
 ### Post titles
 
@@ -43,7 +43,7 @@ Once you are ready to run the test click on the toggle to unpause it. Results ar
 
 ## Creating Custom Tests
 
-The plugin provides a programmatic API to register AB tests for posts:
+There is a programmatic API to register AB tests for posts:
 
 **`register_post_ab_test( string $test_id, array $options )`**
 
@@ -101,7 +101,7 @@ The `click` goal handler is provided out of the box and adds a click event handl
 
 #### Scoped Event Handling
 
-For tests where more complex alternative HTML is being rendered you can define the event target with a CSS selector passed to `element.querySelectorAll()`.
+For tests where more complex alternative HTML is being rendered you can define the event target with a CSS selector.
 
 For example setting the goal to `click:.my-target` will track a conversion when the element in the variant HTML matching `.my-target` is clicked. This applies for all registered goal handlers.
 
