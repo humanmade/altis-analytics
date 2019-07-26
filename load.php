@@ -19,6 +19,11 @@ if ( ! function_exists( 'add_action' ) ) {
 add_action( 'altis.modules.init', function () {
 	$default_settings = [
 		'enabled' => true,
+		'native' => [
+			'ab-tests' => [
+				'titles' => true,
+			],
+		],
 		'google-tag-manager' => [
 			'network' => '',
 			'sites' => [],

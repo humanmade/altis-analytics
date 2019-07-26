@@ -9,6 +9,7 @@ namespace Altis\Analytics;
 
 use Altis\Module;
 use const Altis\ROOT_DIR;
+use function Altis\Enhanced_Search\get_elasticsearch_url;
 
 /**
  * Setup function for the anlaytics module.
@@ -21,6 +22,10 @@ function bootstrap( Module $module ) {
 	if ( $settings['google-tag-manager'] ) {
 		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_google_tag_manager', 0 );
 	}
+
+	if ( $settings['native'] ) {
+		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_native_analytics', 0 );
+	}
 }
 
 /**
@@ -30,4 +35,15 @@ function load_google_tag_manager() {
 	require_once ROOT_DIR . '/vendor/humanmade/hm-gtm/plugin.php';
 	require_once __DIR__ . '/google_tag_manager/namespace.php';
 	Google_Tag_Manager\bootstrap();
+}
+
+/**
+ * Load native analytics features.
+ *
+ * @return void
+ */
+function load_native_analytics() {
+	require_once ROOT_DIR . '/vendor/altis/aws-analytics/plugin.php';
+	require_once __DIR__ . '/native/namespace.php';
+	Native\bootstrap();
 }
