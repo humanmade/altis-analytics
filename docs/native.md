@@ -16,7 +16,7 @@ Altis Analytics provides a built in tool for tracking and analysing user behavio
 }
 ```
 
-Analytics data is stored in an S3 data lake and delivered to Elasticsearch where it is is 1-5 minutes behind real-time.
+Analytics data is stored in an S3 data lake and delivered to Elasticsearch where it is 1-5 minutes behind real-time.
 
 The data is queried from Elasticsearch in the application providing a powerful query language with filtering and aggregations for collecting statistics and other metrics.
 
