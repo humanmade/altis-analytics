@@ -153,3 +153,51 @@ Note you should use the following functions to get and update the variants:
 **`get_test_variants_for_post( string $test_id, int $post_id ) : array`**
 
 **`update_test_variants_for_post( string $test_id, int $post_id, array $variants )`**
+
+## Testing AB Tests
+
+In order to see your AB Tests working locally you can direct traffic to your development environment using the [Trafficator](https://github.com/humanmade/trafficator) tool.
+
+Install it by running `npm install -g trafficator`.
+
+Create a file called `.trafficator.js` that will perform the necessary actions to trigger conversions. The following example tests the built in `titles` tests by doing the following:
+
+- generate visits to the home page of your local site
+- check the stored tests value, for post ID 1 this is `titles_1`
+- return different probabilities for different variant IDs
+- click the title link if the probability is met
+
+```js
+module.exports = {
+	funnels: [
+		{
+			entry: 'https://my-project.altis.dev/',
+			steps: [
+				{
+					name: 'Click Article Title',
+					probability: async page => {
+						const p = await page.evaluate(() => {
+							const tests = JSON.parse(localStorage.getItem('_altis_ab_tests') || "{}");
+							if (tests.titles_1) {
+								if (tests.titles_1 === 1) {
+									return 0.4;
+								}
+								if (tests.titles_1 === 2) {
+									return 0.1;
+								}
+							}
+							return 0.15;
+						});
+						return p;
+					},
+					action: async page => {
+						await page.click('.post-1 .entry-title a');
+					}
+				}
+			]
+		}
+	],
+};
+```
+
+This should generate traffic that exhibits a trend towards the first title variant.

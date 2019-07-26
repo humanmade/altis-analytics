@@ -26,7 +26,7 @@ The are two key concepts to understand the analytics data:
 
 - **Endpoints**
   - Correspond to a unique device & browser combination
-  - Can be associated with a known user account via the `Endpoint.User.UserId` property
+  - Can be associated with a known user account via the `Endpoint.User.UserId` property. This is done automatically for logged in users.
   - Persist across sessions
   - Updated via the `Altis.Analytics.updateEndpoint()` function
 - **Events**
