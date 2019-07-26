@@ -20,19 +20,32 @@ Analytics data is stored in an S3 data lake and delivered to Elasticsearch where
 
 The data is queried from Elasticsearch in the application providing a powerful query language with filtering and aggregations for collecting statistics and other metrics.
 
-This feature provides a tool for developers to query the data for any use-case imaginable including personalisation and [AB testing](./ab-testing.md).
+## Key Concepts
 
-Look out for new built in features backed by native analytics coming in future versions including [Experience Blocks](https://www.altis-dxp.com/experience-blocks/).
+The are two key concepts to understand the analytics data:
+
+- **Endpoints**
+  - Correspond to a unique device & browser combination
+  - Can be associated with a known user account via the `Endpoint.User.UserId` property
+  - Persist across sessions
+  - Updated via the `Altis.Analytics.updateEndpoint()` function
+- **Events**
+  - Has to be of a specific "type" eg. "pageView"
+  - Can have custom attributes and metrics
+  - Data for the current endpoint is merged in
+  - Created via the `Altis.Analytics.record()` function
+
+_The most important thing to note is that the endpoint data is merged into events, not provided when recording the events._
 
 ## Usage
 
-### In JavaScript
-
-Once installed the plugin will queue up an analytics tracker script that provides a few client side functions you can use:
+### JavaScript Functions
 
 **`Altis.Analytics.updateEndpoint( data <object> )`**
 
 Updates the data associated with the current user. Use this to provide updated custom user attributes and metrics, a user ID, and demographic data.
+
+The endpoint data is merged with all new event records associated with that endpoint.
 
 **`Altis.Analytics.record( eventType <string> [, data <object>] )`**
 
@@ -85,7 +98,7 @@ Filters the entire array passed to the client side.
 
 Filters the Elasticsearch server URL.
 
-### Functions
+### PHP Functions
 
 **`Altis\Analytics\Utils\query( array $query, array $params = [] ) : array`**
 
@@ -105,9 +118,7 @@ A utility function for merging aggregations returned by Elasticsearch queries. T
 
 ## Querying Data
 
-Data can be queried from Elasticsearch, providing a powerful tool for filtering and aggregating records. If you are using Altis requests are automatically signed.
-
-It is recommended to use the `Altis\Analytics\Utils\query()` function for this.
+All analytics data is in the form of event records stored in Elasticsearch on an index called `analytics`.
 
 ### Anatomy of an event record
 
@@ -131,7 +142,7 @@ A user session covers every event recorded between opening the website and closi
   - `scrollDepthNow`: Scroll depth at time of event. Percentage value between 1-100.
   - `elapsed`: Time elapsed in milliseconds since the start of the page view.
   - Any metrics added via `Altis.Analytics.registerMetric()` or passed to `Altis.Analytics.record()`.
-- `endpoint`
+- `endpoint`: Represents the current device and browser.
   - `Address`: An optional target for push notifications such as an email address or phone number.
   - `OptOut`: The push notification channels this visitor has opted out of. Defaults to "ALL".
   - `Demographic`
@@ -142,11 +153,11 @@ A user session covers every event recorded between opening the website and closi
     - `ModelVersion`: Browser version.
     - `Platform`: The device operating system.
     - `PlatformVersion`: The operating system version.
-  - `User`
+  - `User`: If there is a user account for this endpoint associated information can be found here.
     - `UserAttributes`
       - Any custom attributes associated with the user if known.
     - `UserId`: An ID associated with the user in your application. Useful for linking endpoints across devices.
-- `session`
+- `session`: Sub-session tracking eg. page visibility change events.
   - `session_id`: Persists for a subsession, triggered by page visibility changes. Recorded with `_session.start` and `_session.stop` events.
   - `start_timestamp`: Time in milliseconds when the subsession started. Recorded with `_session.start` events.
   - `stop_timestamp`: Time in milliseconds when the subsession ended. Recorded with `_session.stop` events.
