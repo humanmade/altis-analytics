@@ -1,8 +1,8 @@
-# AB Testing
+# Experiments
 
-Backed by [native Altis Analytics](./native.md) AB testing is a powerful tool for optimising content and measuring the effectiveness of discrete changes to the site.
+Backed by [native Altis Analytics](./native.md) Experiments are a powerful tool for optimising content and measuring the effectiveness of changes to the site.
 
-The AB testing feature is enabled by default and provides a developer API for creating custom tests along with built in features.
+The feature is enabled by default and provides a developer API for creating custom experiments as well as some built in features.
 
 ## Features
 
@@ -11,7 +11,7 @@ The AB testing feature is enabled by default and provides a developer API for cr
 
 The following built in tests are provided:
 
-### Post titles
+### Post Title A/B Tests
 
 With this feature enabled it's simple to create AB Tests for your post titles directly from the post edit screen.
 
@@ -24,7 +24,7 @@ It is enabled by default but can be disabled via the configuration file:
 			"modules": {
 				"analytics": {
 					"native": {
-						"ab-tests": {
+						"experiments": {
 							"titles": false
 						}
 					}
@@ -58,7 +58,7 @@ Sets up the test.
   - `query_filter <string | callable>`: Elasticsearch bool query to filter total events being queried.
   - `variant_callback <callable>`: An optional callback used to render variants based. Recieves the variant value, test ID and post ID as arguments. By default passes the variant value through directly.
 
-**`output_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
+**`output_ab_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
 
 Returns the AB Test markup for client side processing.
 
@@ -68,7 +68,7 @@ Returns the AB Test markup for client side processing.
 - `$args`: An optional array of data to pass through to `variant_callback`.
 
 ```php
-namespace Altis\AB_Tests;
+namespace Altis\Experiments;
 
 // Register the test.
 register_post_ab_test( 'featured_images', [
@@ -86,7 +86,7 @@ register_post_ab_test( 'featured_images', [
 
 // Apply the test by filtering some standard output.
 add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	return output_test_html_for_post( 'featured_images', $post_id, $html, [
+	return output_ab_test_html_for_post( 'featured_images', $post_id, $html, [
 		'size' => $size,
 		'attr' => $attr,
 	] );
@@ -109,7 +109,7 @@ For example setting the goal to `click:.my-target` will track a conversion when 
 
 You can define your own goal handlers in JavaScript:
 
-**`Altis.Analytics.ABTest.registerGoal( name <string>, callback <function>, closest <array> )`**
+**`Altis.Analytics.Experiments.registerGoal( name <string>, callback <function>, closest <array> )`**
 
 This function adds a goal handler where `name` corresponds to the value of `$options['goal']` when registering an AB Test.
 
@@ -150,17 +150,17 @@ How you manage the variant data is up to you, for example you could use Fieldman
 
 Note you should use the following functions to get and update the variants:
 
-**`get_test_variants_for_post( string $test_id, int $post_id ) : array`**
+**`get_ab_test_variants_for_post( string $test_id, int $post_id ) : array`**
 
-**`update_test_variants_for_post( string $test_id, int $post_id, array $variants )`**
+**`update_ab_test_variants_for_post( string $test_id, int $post_id, array $variants )`**
 
-## Testing AB Tests
+## Testing Experiments
 
-In order to see your AB Tests working locally you can direct traffic to your development environment using the [Trafficator](https://github.com/humanmade/trafficator) tool.
+In order to see your experiments working locally you need to generate enough traffic to get statistically significant results. You can direct traffic to your development environment using the [Trafficator](https://github.com/humanmade/trafficator) tool.
 
 Install it by running `npm install -g trafficator`.
 
-Create a file called `.trafficator.js` that will perform the necessary actions to trigger conversions. The following example tests the built in `titles` tests by doing the following:
+Create a file called `.trafficator.js` that will perform the necessary actions to trigger conversions. The following example tests the built in `titles` experiment by doing the following:
 
 - generate visits to the home page of your local site
 - check the stored tests value, for post ID 1 this is `titles_1`
