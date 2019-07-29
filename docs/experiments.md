@@ -9,7 +9,7 @@ The feature is enabled by default and provides a developer API for creating cust
 - Tests run until the end date or when a statistically significant improvement has been found
 - When a winner is found the winning variant will be shown to everyone
 
-The following built in tests are provided:
+The following built in experiments are provided:
 
 ### Post Title A/B Tests
 
