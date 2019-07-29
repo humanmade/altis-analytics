@@ -123,7 +123,7 @@ The callback receives the following parameters:
 The `closest` parameter allows you to ensure the element passed to your callback is of a certain type, achieved by stepping up through the DOM tree, for example to return only anchor tags you would pass `[ 'a' ]`.
 
 ```js
-Altis.Analytics.ABTest.registerGoal( 'scrollIntoView', function ( element, record ) {
+Altis.Analytics.Experiments.registerGoal( 'scrollIntoView', function ( element, record ) {
 	var listener = function () {
 		// Check element has come into view or not.
 		if ( element.getBoundingClientRect().top > window.innerHeight ) {
