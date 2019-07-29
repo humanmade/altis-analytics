@@ -20,7 +20,7 @@ function bootstrap() {
 		return get_elasticsearch_url();
 	} );
 
-	// Load AB Tests.
+	// Load Experiments.
 	if ( $config['experiments'] ) {
 		load_experiments();
 
@@ -37,7 +37,7 @@ function bootstrap() {
 }
 
 /**
- * Load AB Tests plugin.
+ * Load Experiments plugin.
  */
 function load_experiments() {
 	require_once ROOT_DIR . '/vendor/altis/experiments/plugin.php';
