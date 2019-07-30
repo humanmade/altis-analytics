@@ -20,15 +20,15 @@ function bootstrap() {
 		return get_elasticsearch_url();
 	} );
 
-	// Load AB Tests.
-	if ( $config['ab-tests'] ) {
-		load_ab_tests();
+	// Load Experiments.
+	if ( $config['experiments'] ) {
+		load_experiments();
 
-		// Enable/Disable AB Test Features.
-		if ( is_array( $config['ab-tests'] ) ) {
-			foreach ( $config['ab-tests'] as $feature => $enabled ) {
+		// Enable/Disable Experiments Features.
+		if ( is_array( $config['experiments'] ) ) {
+			foreach ( $config['experiments'] as $feature => $enabled ) {
 				add_filter(
-					"altis.ab_tests.features.{$feature}",
+					"altis.experiments.features.{$feature}",
 					$enabled ? '__return_true' : '__return_false'
 				);
 			}
@@ -37,8 +37,8 @@ function bootstrap() {
 }
 
 /**
- * Load AB Tests plugin.
+ * Load Experiments plugin.
  */
-function load_ab_tests() {
-	require_once ROOT_DIR . '/vendor/altis/ab-tests/plugin.php';
+function load_experiments() {
+	require_once ROOT_DIR . '/vendor/altis/experiments/plugin.php';
 }
