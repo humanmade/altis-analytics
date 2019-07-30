@@ -1,5 +1,7 @@
 # Analytics
 
+![](./assets/banner-analytics.png)
+
 Analytics is the gathering, understanding and application of data to measure, improve and make sites smarter.
 
 ## Native Analytics
