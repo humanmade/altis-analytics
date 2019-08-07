@@ -6,7 +6,7 @@ You can supply this extra data via GTM's data layer feature.
 
 ## The `dataLayer` variable
 
-The `dataLayer` variable is a global JavaScript variable provided on each webpage. It is an array containing a single object and is defined in the following way:
+The `dataLayer` variable is a global JavaScript variable provided on each web page. It is an array containing a single object and is defined in the following way:
 
 ```js
 var dataLayer = [ {
