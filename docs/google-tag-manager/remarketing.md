@@ -4,7 +4,7 @@ Remarketing can be configured through a custom script tag, the Google Ads remark
 
 Once you have Google Analytics and [conversion tracking](conversion-tracking.md) configured in Tag Manager you can use that information within Google Analytics to enable remarketing and create Audience Definitions.
 
-The audiences you define based on previous conversions or other desirable behaviours can be used to set cookies that are easily shared with Google Ads, AdSense, Ad Exchange or Postbacks (for 3rd party ad providers) to show more relevant ads and offers.
+The audiences you define based on previous conversions or other desirable behaviors can be used to set cookies that are easily shared with Google Ads, AdSense, Ad Exchange or Postbacks (for 3rd party ad providers) to show more relevant ads and offers.
 
 You should link your ad provider accounts to the current GA property from the GA admin section. These will later be available to select as "Audience Destinations".
 

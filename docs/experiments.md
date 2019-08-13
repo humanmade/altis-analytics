@@ -1,6 +1,6 @@
 # Experiments
 
-Backed by [native Altis Analytics](./native.md) Experiments are a powerful tool for optimising content and measuring the effectiveness of changes to the site.
+Backed by [native Altis Analytics](./native.md) Experiments are a powerful tool for optimizing content and measuring the effectiveness of changes to the site.
 
 The feature is enabled by default and provides a developer API for creating custom experiments as well as some built in features.
 
@@ -57,7 +57,7 @@ Sets up the test.
   - `goal <string>`: The conversion goal event name, eg "click".
   - `goal_filter <string | callable>`: Elasticsearch bool query to filter goal results. If a callable is passed it receives the test ID and post ID as arguments.
   - `query_filter <string | callable>`: Elasticsearch bool query to filter total events being queried.
-  - `variant_callback <callable>`: An optional callback used to render variants based. Recieves the variant value, test ID and post ID as arguments. By default passes the variant value through directly.
+  - `variant_callback <callable>`: An optional callback used to render variants. Recieves the variant value, post ID and optional args array as arguments. By default passes the variant value through directly.
   - `winner_callback <callable>`: An optional callback used to update the post when a winner is foung. Recieves the winning variant value and post ID as arguments. By default this is a no-op.
 
 **`output_ab_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
@@ -119,7 +119,7 @@ The callback receives the following parameters:
 
 - `element <HTMLElement>`: Target node for the event.
 - `record <function>`: Receives the target element and a callback to log the conversion. The function accepts two optional arguments:
-  - `attributes <object>`: Custom atttributes to record with the event.
+  - `attributes <object>`: Custom attributes to record with the event.
   - `metrics <object>`: Custom metrics to record with the event.
 
 The `closest` parameter allows you to ensure the element passed to your callback is of a certain type, achieved by stepping up through the DOM tree, for example to return only anchor tags you would pass `[ 'a' ]`.

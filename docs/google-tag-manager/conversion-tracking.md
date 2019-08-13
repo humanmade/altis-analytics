@@ -35,7 +35,7 @@ From the Google Analytics admin section:
 3. Select "Event" as the goal type and click continue
 4. Enter the values for the custom event you want to match on, you can use any combination of Action, Category, Label and Value
 
-Your conversion goals then show up in your dashboard, and can subsequently be used for [remarketing](remarketing.md) and also for creating [Google Optimise](optimise.md) content tests.
+Your conversion goals then show up in your dashboard, and can subsequently be used for [remarketing](remarketing.md) and also for creating [Google Optimize](optimize.md) content tests.
 
 ## Manual Event Tracking
 
