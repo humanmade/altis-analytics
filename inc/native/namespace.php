@@ -7,11 +7,11 @@ namespace Altis\Analytics\Native;
 
 use const Altis\ROOT_DIR;
 use function Altis\Enhanced_Search\get_elasticsearch_url;
-use function Altis\get_config;
-use HM\Workflows\Workflow;
-use HM\Workflows\Event;
 use function Altis\Experiments\get_post_ab_test;
+use function Altis\get_config;
 use function HM\Workflows\get_post_assignees;
+use HM\Workflows\Event;
+use HM\Workflows\Workflow;
 
 /**
  * Setup integration.
