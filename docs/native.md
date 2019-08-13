@@ -1,6 +1,6 @@
 # Native Analytics
 
-Altis Analytics provides a built in tool for tracking and analysing user behaviour across the site. It is enabled by default but can be switched off via the configuration file:
+Altis Analytics provides a built in tool for tracking and analyzing user behavior across the site. It is enabled by default but can be switched off via the configuration file:
 
 ```json
 {
