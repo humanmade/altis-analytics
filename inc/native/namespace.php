@@ -58,12 +58,10 @@ function load_experiments() {
 function setup_notifications() {
 	// Remove default notifications.
 	remove_action( 'altis.experiments.test.ended', 'Altis\\Experiments\\send_post_ab_test_notification', 10, 2 );
-	remove_action( 'altis.experiments.test.winner_found', 'Altis\\Experiments\\send_post_ab_test_notification', 10, 2 );
 
 	// Experiment events
 	$events = [
 		'altis.experiments.test.ended' => __( 'An experiment has ended', 'altis-analytics' ),
-		'altis.experiments.test.winner_found' => __( 'An experiment has a winner', 'altis-analytics' ),
 	];
 
 	foreach ( $events as $event => $label ) {
@@ -117,9 +115,7 @@ function setup_notifications() {
 				'administrator',
 			] )
 			->what(
-				__( 'Your test %test.title% on "%post.title%" has ended', 'altis-analytics' ),
-				__( 'Click the link below to view the results', 'altis-analytics' ),
-				[ 'view' ]
+				__( 'Your test %test.title% on "%post.title%" has ended', 'altis-analytics' )
 			)
 			->where( 'email' )
 			->where( 'dashboard' );
