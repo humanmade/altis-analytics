@@ -7,8 +7,8 @@ namespace Altis\Analytics\Native;
 
 use const Altis\ROOT_DIR;
 use function Altis\Enhanced_Search\get_elasticsearch_url;
-use function Altis\Experiments\get_post_ab_test;
 use function Altis\Experiments\get_ab_test_variants_for_post;
+use function Altis\Experiments\get_post_ab_test;
 use function Altis\get_config;
 use function HM\Workflows\get_post_assignees;
 use HM\Workflows\Event;
