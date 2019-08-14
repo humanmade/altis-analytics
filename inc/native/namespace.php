@@ -8,6 +8,7 @@ namespace Altis\Analytics\Native;
 use const Altis\ROOT_DIR;
 use function Altis\Enhanced_Search\get_elasticsearch_url;
 use function Altis\Experiments\get_post_ab_test;
+use function Altis\Experiments\get_ab_test_variants_for_post;
 use function Altis\get_config;
 use function HM\Workflows\get_post_assignees;
 use HM\Workflows\Event;
@@ -68,6 +69,11 @@ function setup_notifications() {
 		// Create the event handler.
 		$event = Event::register( $event );
 
+		$event->set_listener( [
+			'action' => $event->get_id(),
+			'accepted_args' => 2,
+		] );
+
 		$event->add_recipient_handler( 'post_author', function ( string $test_id, int $post_id ) {
 			$post = get_post( $post_id );
 			return $post->post_author;
@@ -75,7 +81,7 @@ function setup_notifications() {
 
 		$event->add_recipient_handler( 'post_assignees', function ( string $test_id, int $post_id ) {
 			return get_post_assignees( $post_id );
-		}, __( 'Post author', 'altis-analytics' ) );
+		}, __( 'Post assignees', 'altis-analytics' ) );
 
 		$event->add_message_tags( [
 			'test.title' => function ( string $test_id ) {
@@ -84,7 +90,8 @@ function setup_notifications() {
 			},
 			'post.title' => function ( string $test_id, int $post_id ) {
 				$post = get_post( $post_id );
-				return $post->post_title;
+				$variants = get_ab_test_variants_for_post( $test_id, $post_id );
+				return count( $variants ) ? $variants[0] : $post->post_title;
 			},
 		] );
 
