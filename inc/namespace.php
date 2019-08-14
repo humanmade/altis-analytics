@@ -9,7 +9,6 @@ namespace Altis\Analytics;
 
 use Altis\Module;
 use const Altis\ROOT_DIR;
-use function Altis\Enhanced_Search\get_elasticsearch_url;
 
 /**
  * Setup function for the anlaytics module.

@@ -50,13 +50,20 @@ There is a programmatic API to register AB tests for posts:
 Sets up the test.
 
 - `$test_id`: A unique ID for the test.
-- `$options`: Configuration array for the test.
+- `$options`: Configuration options for the test.
+  - `label <string>`: A human readable label for the test.
   - `rest_api_variants_field <string>`: The field name to make variants available at.
   - `rest_api_variants_type <string>`:  The data type of the variants.
-  - `goal <string>`: The conversion goal event name, eg "click".
+  - `goal <string>`: The conversion goal event name, eg "click" or "click:.selector a".
   - `goal_filter <string | callable>`: Elasticsearch bool query to filter goal results. If a callable is passed it receives the test ID and post ID as arguments.
-  - `query_filter <string | callable>`: Elasticsearch bool query to filter total events being queried.
-  - `variant_callback <callable>`: An optional callback used to render variants based. Receives the variant value, test ID and post ID as arguments. By default passes the variant value through directly.
+  - `query_filter <string | callable>`: Elasticsearch bool query to filter total events being queried. If a callable is passed it receives the test ID and post ID as arguments.
+  - `variant_callback <callable>`: An optional callback used to render variants based. Arguments:
+    - `$value <mixed>`: The variant value.
+    - `$post_id <int>`: The post ID.
+    - `$args <array>`: Optional args passed to `output_ab_test_html_for_post()`.
+  - `winner_callback <callable>`: An optional callback used to perform updates to the post when a winner is found. Defaults to no-op. Arguments:
+    - `$post_id <int>`: The post ID
+    - `$value <mixed>`: The winning variant value.
 
 **`output_ab_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
 
@@ -153,6 +160,24 @@ Note you should use the following functions to get and update the variants:
 **`get_ab_test_variants_for_post( string $test_id, int $post_id ) : array`**
 
 **`update_ab_test_variants_for_post( string $test_id, int $post_id, array $variants )`**
+
+### Actions
+
+**`altis.experiments.test.ended: (string) $test_id, (int) $post_id`**
+
+Fired when a test has ended either by finding a statistically significant difference or the end date was reached.
+
+**`altis.experiments.test.ended.$test_id: (int) $post_id`**
+
+This is the same as above but scoped to tests with the ID `$test_id`.
+
+**`altis.experiments.test.winner_found: (string) $test_id, (int) $post_id, (mixed) $value`**
+
+Fired when a winning variant has been found. The `$value` parameter is the stored variant value.
+
+**`altis.experiments.test.winner_found.$test_id: (int) $post_id, (mixed) $value`**
+
+This is the same as the above but scoped to tests with the ID `$test_id`.
 
 ## Testing Experiments
 
