@@ -41,6 +41,14 @@ Once you are ready to run the test click on the toggle to unpause it. Results ar
 
 ![AB Testing Titles user interface](./assets/ab-tests-titles.png)
 
+By default post title AB tests are enabled for Posts and Pages however custom post types can be supported using the `altis.experiments.titles` key either when registering the post type or in the `init` action, for example:
+
+```php
+add_action( 'init', function () {
+	add_post_type_support( 'events', 'altis.experiments.titles' );
+} );
+```
+
 ## Creating Custom Tests
 
 There is a programmatic API to register AB tests for posts:
@@ -64,6 +72,7 @@ Sets up the test.
   - `winner_callback <callable>`: An optional callback used to perform updates to the post when a winner is found. Defaults to no-op. Arguments:
     - `$post_id <int>`: The post ID
     - `$value <mixed>`: The winning variant value.
+  - `post_types <array>`: An array of supported post types for the test.
 
 **`output_ab_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
 
