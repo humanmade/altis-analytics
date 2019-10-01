@@ -17,7 +17,12 @@
     ],
     "autoload": {
         "files": [
-            "load.php"
+            "inc/namespace.php",
+            "inc/google_tag_manager/namespace.php",
+            "inc/native/namespace.php"
         ]
+    },
+    "extra": {
+        "altis": {}
     }
 }
