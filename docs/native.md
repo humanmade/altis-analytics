@@ -47,6 +47,42 @@ Updates the data associated with the current user. Use this to provide updated c
 
 The endpoint data is merged with all new event records associated with that endpoint.
 
+The accepted data shape is as follows:
+
+```json
+{
+  "Address": "string",
+  "Attributes": { "string": [ "string", ... ]
+    ... },
+  "Demographic": {
+    "AppVersion": "string",
+    "Locale": "string",
+    "Make": "string",
+    "Model": "string",
+    "ModelVersion": "string",
+    "Platform": "string",
+    "PlatformVersion": "string",
+    "Timezone": "string"
+  },
+  "Location": {
+    "City": "string",
+    "Country": "string",
+    "Latitude": double,
+    "Longitude": double,
+    "PostalCode": "string",
+    "Region": "string"
+  },
+  "Metrics": { "string": double
+    ... },
+  "OptOut": "string",
+  "User": {
+    "UserAttributes":  "string": [ "string", ... ]
+      ... },
+    "UserId": "string"
+  }
+}
+```
+
 **`Altis.Analytics.record( eventType <string> [, data <object>] )`**
 
 Records an event of `eventType`. This can be any string. The optional data passed in should be an object with either or both an `attributes` object and `metrics` object:
@@ -153,6 +189,14 @@ A user session covers every event recorded between opening the website and closi
     - `ModelVersion`: Browser version.
     - `Platform`: The device operating system.
     - `PlatformVersion`: The operating system version.
+    - `TimeZone`: The visitors timezone string eg. "Europe/London".
+  - `Location`
+    - `City`: The city name in english eg "Paris".
+    - `Country`: The two letter [iso-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) country code.
+    - `Latitude`: Floating point latitude. Note that the accuracy of this data is low, typically within ~200 miles.
+    - `Longitude`: Floating point longitude.
+    - `PostalCode`: Postal code if available.
+    - `Region`: The 2-3 letter [iso-3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) code for the country subdivision.
   - `User`: If there is a user account for this endpoint associated information can be found here.
     - `UserAttributes`
       - Any custom attributes associated with the user if known.
