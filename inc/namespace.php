@@ -32,7 +32,6 @@ function bootstrap( Module $module ) {
  */
 function load_google_tag_manager() {
 	require_once ROOT_DIR . '/vendor/humanmade/hm-gtm/plugin.php';
-	require_once __DIR__ . '/google_tag_manager/namespace.php';
 	Google_Tag_Manager\bootstrap();
 }
 
@@ -43,6 +42,5 @@ function load_google_tag_manager() {
  */
 function load_native_analytics() {
 	require_once ROOT_DIR . '/vendor/altis/aws-analytics/plugin.php';
-	require_once __DIR__ . '/native/namespace.php';
 	Native\bootstrap();
 }
