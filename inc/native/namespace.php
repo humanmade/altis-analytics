@@ -40,7 +40,7 @@ function bootstrap() {
 		}
 
 		// Experiments notifications.
-		if ( get_config()['modules']['workflow'] ) {
+		if ( get_config()['modules']['workflow']['enabled'] ) {
 			add_action( 'plugins_loaded', __NAMESPACE__ . '\\setup_notifications', 12 );
 		}
 	}
@@ -57,10 +57,15 @@ function load_experiments() {
  * Hook into the workflow module for experiment notifications.
  */
 function setup_notifications() {
+	// Double check the Workflows plugin is loaded.
+	if ( ! class_exists( 'HM\\Workflows\\Event' ) ) {
+		return;
+	}
+
 	// Remove default notifications.
 	remove_action( 'altis.experiments.test.ended', 'Altis\\Experiments\\send_post_ab_test_notification', 10, 2 );
 
-	// Experiment events
+	// Experiment events.
 	$events = [
 		'altis.experiments.test.ended' => __( 'An experiment has ended', 'altis-analytics' ),
 	];
