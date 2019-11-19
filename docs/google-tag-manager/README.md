@@ -53,4 +53,4 @@ add_filter( 'hm_gtm_network_id', function ( string $id ) : string {
 } );
 ```
 
-**Note** it is not recommended practice to do this, instead you should provide any conditional context you need via the `dataLayer` variable described below and load all tags from a single container if possible.
+**Note** it is not recommended practice to do this, instead you should provide any conditional context you need via [the `dataLayer` variable](data-layer.md) and load all tags from a single container if possible.
