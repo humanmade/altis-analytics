@@ -10,8 +10,9 @@ You should link your ad provider accounts to the current GA property from the GA
 
 In the GA admin section:
 
-1. select "Audience Definitions" and then the "Audiences" sub option
-2. follow the steps there to enable remarketing. A default "All users" audience will be created for you. - 3. Click the blue "Enable" button
+1. Select "Audience Definitions" and then the "Audiences" sub option
+2. Follow the steps there to enable remarketing. A default "All users" audience will be created for you. 
+3. Click the blue "Enable" button
 
 The Audiences page will now show you a list of your audiences, and you can create new audiences here based many facets including:
 
