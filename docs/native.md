@@ -205,7 +205,7 @@ $result = Altis\Analytics\Utils\query( [
     ]
   ],
   // Order by latest events.
-  'order' => [ 'event_timestamp' => 'desc' ]
+  'sort' => [ 'event_timestamp' => 'desc' ]
 ] );
 ```
 
