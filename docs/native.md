@@ -244,7 +244,7 @@ $result = Altis\Analytics\Utils\query( [
     // Create a stats aggregation for all the time on page values found above.
     'stats' => [
       'stats_bucket' => [
-        'buckets_path' => 'sessions>time_in_page'
+        'buckets_path' => 'sessions>time_on_page'
       ]
     ]
   ],
