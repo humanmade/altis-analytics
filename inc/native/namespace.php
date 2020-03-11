@@ -44,6 +44,9 @@ function bootstrap() {
 			add_action( 'plugins_loaded', __NAMESPACE__ . '\\setup_notifications', 12 );
 		}
 	}
+
+	// Add endpoint data from cloudfront headers.
+	add_filter( 'altis.analytics.data.endpoint', __NAMESPACE__ . '\\add_endpoint_data' );
 }
 
 /**
@@ -132,4 +135,23 @@ function setup_notifications() {
 			->where( 'email' )
 			->where( 'dashboard' );
 	}
+}
+
+/**
+ * Add additional endpoint data based on CloudFront headers.
+ *
+ * @param array $data
+ * @return array
+ */
+function add_endpoint_data( array $data ) : array {
+
+	// Add viewer country.
+	if ( isset( $_SERVER['HTTP_CLOUDFRONT_VIEWER_COUNTRY'] ) ) {
+		if ( ! isset( $data['Location'] ) ) {
+			$data['Location'] = [];
+		}
+		$data['Location']['Country'] = strtoupper( sanitize_key( $_SERVER['HTTP_CLOUDFRONT_VIEWER_COUNTRY'] ) );
+	}
+
+	return $data;
 }
