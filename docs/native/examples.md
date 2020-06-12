@@ -8,7 +8,7 @@ In this example we want to be able to create audiences based on the current weat
 
 The following example uses the db-ip.com API as a data source.
 
-```js
+```html
 <script src="https://cdn.db-ip.com/js/dbip.js"
 	data-api-key="a05p3c1m3n79875p3c1m3nd26cd0n07u5307ac5d">
 </script>
@@ -30,9 +30,19 @@ Altis.Analytics.onReady( function () {
 </script>
 ```
 
-## Integrating With Google Analytics
+## Sending Audience IDs To Another Service
 
-The following example shows how you can pass Altis Analytics audi
+Integrating with other analytics is possible using the client side data provided by Altis Analytics. The following example sends the Altis audience ID to Google Analytics as a dimension.
+
+```html
+<script>
+Altis.Analytics.onReady( function () {
+	var audiences = Altis.Analytics.getAudiences();
+	// Set configured dimension 12 to the first matched audience ID, 0 for no audience.
+	ga( 'set', 'dimension12', audiences[0] || 0 );
+} );
+</script>
+```
 
 ## Most Popular Posts
 
