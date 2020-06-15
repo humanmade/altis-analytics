@@ -44,6 +44,10 @@ The highly flexible analytics data set is the engine behind features such as [Ex
 
 [Experience Blocks](./experience-blocks.md) not only provide built in editor blocks but also expose the low-level API and HTML markup that powers them.
 
+## Privacy
+
+[Discover how Altis helps to respect your visitor's privacy](./privacy.md) by helping you control how long to keep data for and learning how to process analytics data for long term storage.
+
 ## Examples
 
 [Check out the examples](./examples.md) to see some real-world uses of the data.

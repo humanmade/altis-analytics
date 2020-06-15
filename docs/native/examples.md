@@ -120,6 +120,65 @@ This yields a result like the following:
 
 The objects in the buckets array above have a `key` and a `doc_count` property where the `key` is the value of the `attributes.postId` field and the `doc_count` is the number of times this post ID appeared in the data set.
 
+## Cumulative Statistics
+
+Because data is deleted after the configured number of days outlined in the [privacy document](./privacy.md) it is necessary to gather aggregated data over time using scheduled tasks. This is the method used for [tracking A/B test results](../experiments.md).
+
+The following example records the number of page views for a given post over time.
+
+```php
+// Schedule the tracking task when the post is published.
+add_action( 'publish_post', function ( $post_id ) {
+  if ( ! wp_next_scheduled( 'track_page_views' ) ) {
+    wp_schedule_event( time(), 'daily', 'track_page_views', [ $post_id ] );
+  }
+} );
+
+// Fetch and update the page views on the scheduled action hook.
+add_action( 'track_page_views', function ( $post_id ) {
+  // Get the existing data if any, default to 0.
+  $page_views = get_post_meta( $post_id, 'page_views', true ) ?: 0;
+  $page_views_updated = get_post_meta( $post_id, 'page_views_updated', true ) ?: 0;
+
+  // Get the page views events.
+  $result = Altis\Analytics\Utils\query( [
+    // Don't return any actual data, we just want to know the total.
+    'size' => 0,
+    // Restrict the results to a single post we're interested in.
+    'query' => [
+      'bool' => [
+        'filter' => [
+          // Scope the query to the current site.
+          [ 'term' => [ 'attributes.blogId.keyword' => get_current_blog_id() ] ],
+          // Scope the query to page view events.
+          [ 'term' => [ 'event_type.keyword' => 'pageView' ] ],
+          // Filter by the target post ID.
+          [ 'term' => [ 'attributes.postId.keyword' => $post_id ] ],
+          // Only get events more recent than the last update (milliseconds).
+          [ 'range' => [ 'event_timestamp' => [ 'gte' => $page_views_updated ] ] ],
+        ],
+      ],
+    ],
+  ] );
+
+  // Set the last updated time to time now in milliseconds.
+  update_post_meta( $post_id, 'page_views_updated', Altis\Analytics\Utils\milliseconds() );
+
+  // Add the total number of records to our current count.
+  update_post_meta( $post_id, 'page_views', $page_views + $result['hits']['total'] );
+} );
+```
+
+The `page_views` post meta can then be used to display in post list tables, or used in queries for example:
+
+```php
+$posts_with_less_than_10_views = new WP_Query( [
+  'meta_key' => 'page_views',
+  'meta_value_num' => 10,
+  'meta_compare' => '<=',
+] );
+```
+
 ## Time On Page Stats
 
 The following query will output aggregated statistics for the time spent on the given page URL across all visitor sessions.

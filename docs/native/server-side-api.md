@@ -68,6 +68,17 @@ Get the current time since the unix epoch in milliseconds.
 
 A utility function for merging aggregations returned by Elasticsearch queries. This is necessary to keep a store of your analytics data as Elasticsearch indexes can be rotated or lost.
 
+The `$bucket_type` parameter should correspond to the type of aggregation you are merging data for. For simple results you can leave this out however for nested aggregations or to determine the bucket type automatically you should make your queries to ElasticSearch with the `typed_keys` query parameter. This helps the `merge_aggregations()` function perform more complex merges of nested aggregate data.
+
+```php
+$result = Altis\Analytics\Utils\query( [
+  // ... your query with aggregations ...
+], [
+  // Return aggregation type with keys.
+  'typed_keys' => '',
+] );
+```
+
 ## Filters
 
 **`altis.analytics.data.endpoint <array>`**
