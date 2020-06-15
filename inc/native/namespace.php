@@ -25,6 +25,9 @@ function bootstrap() {
 		return get_elasticsearch_url();
 	} );
 
+	// Set data retention period.
+	add_filter( 'altis.analytics.max_index_age', __NAMESPACE__ . '\\set_data_retention_days' );
+
 	// Load Experiments.
 	if ( $config['experiments'] ) {
 		load_experiments();
@@ -47,6 +50,19 @@ function bootstrap() {
 
 	// Add endpoint data from cloudfront headers.
 	add_filter( 'altis.analytics.data.endpoint', __NAMESPACE__ . '\\add_endpoint_data' );
+}
+
+/**
+ * Set the number of days to keep data for.
+ *
+ * @param int $days The number of days to keep analytics data for.
+ * @return int
+ */
+function set_data_retention_days( int $days ) : int {
+	if ( get_config()['modules']['analytics']['native']['data-retention-days'] ?? false ) {
+		return get_config()['modules']['analytics']['native']['data-retention-days'];
+	}
+	return $days;
 }
 
 /**
