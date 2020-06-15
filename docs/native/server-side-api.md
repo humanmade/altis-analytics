@@ -94,7 +94,7 @@ Filters the Elasticsearch server URL.
 
 **`altis.analytics.noop <bool>`**
 
-Returning `false` from this filter will prevent any events or updated endpoint data from being sent to Pinpoint. The built in usage for this is to prevent logging events on page previews.
+Returning `true` from this filter will prevent any events or updated endpoint data from being sent to Pinpoint. The built in usage for this is to prevent logging events on page previews.
 
 **`altis.analytics.max_index_age <int>`**
 
