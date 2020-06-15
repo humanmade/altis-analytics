@@ -18,31 +18,31 @@ The accepted data shape is as follows:
 
 ```json
 {
-  "Address": "string",
-  "Attributes": { "string": [ "string", ... ] ... },
+  "Address": string,
+  "Attributes": { "key": string[], ... },
   "Demographic": {
-    "AppVersion": "string",
-    "Locale": "string",
-    "Make": "string",
-    "Model": "string",
-    "ModelVersion": "string",
-    "Platform": "string",
-    "PlatformVersion": "string",
-    "Timezone": "string"
+    "AppVersion": string,
+    "Locale": string,
+    "Make": string,
+    "Model": string,
+    "ModelVersion": string,
+    "Platform": string,
+    "PlatformVersion": string,
+    "Timezone": string
   },
   "Location": {
-    "City": "string",
-    "Country": "string",
-    "Latitude": double,
-    "Longitude": double,
-    "PostalCode": "string",
-    "Region": "string"
+    "City": string,
+    "Country": string,
+    "Latitude": number,
+    "Longitude": number,
+    "PostalCode": string,
+    "Region": string
   },
-  "Metrics": { "string": [ double, ... ] ... },
-  "OptOut": "string",
+  "Metrics": { "key": number[], ... },
+  "OptOut": string,
   "User": {
-    "UserAttributes":  "string": [ "string", ... ] ... },
-    "UserId": "string"
+    "UserAttributes": { "key": string[], ... },
+    "UserId": string
   }
 }
 ```
@@ -50,6 +50,8 @@ The accepted data shape is as follows:
 **`Altis.Analytics.getEndpoint()`**
 
 Returns the current endpoint data object.
+
+Note that even if attributes, metrics or user attributes are provided as a single string or number they will be returned as an array of that type by this function.
 
 ## Tracking Functions
 
@@ -60,11 +62,11 @@ Records an event of `eventType`. This can be any string. The optional data passe
 ```js
 {
   attributes: {
-    name: 'value' // <string>
+    name: 'value' // <string|string[]>
     // ...
   },
   metrics: {
-    name: 1 // <number>
+    name: 1 // <number|number[]>
     // ...
   },
 }
