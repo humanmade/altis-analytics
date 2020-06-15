@@ -26,7 +26,9 @@ Get the Elasticsearch server URL.
 
 **`Altis\Analytics\Audiences\register_field( string $field, string $label, ?string $description = null )`**
 
-Registers a field in the event record data to make it available in the audiences UI. Registered fields can be used to define audiences that can be used when querying anlaytics data.
+Registers a field in the event record data to make it available in the audiences UI. Registered fields can be used to define audiences that can be used when querying analytics data.
+
+`$field` is a field in the ElasticSearch index as described in the [data structure](./data-structure.md), `$label` is a human readable name for the field, and `$description` is an optional extended description shown to users in the audience builder UI.
 
 **`Altis\Analytics\Audiences\query_audiences( array $args = [] ) : array`**
 
