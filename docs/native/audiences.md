@@ -48,3 +48,57 @@ The following fields are already mapped by default:
 - Year
 - Sessions (unique sessions for the endpoint)
 - Page views (total page views for the endpoint)
+
+## Audience Picker React Component
+
+The analytics module exposes a React component that can be used when writing blocks for the block editor. This is useful if you want to write custom personalisation features.
+
+To get started you must first enqueue the audience assets. This can be done by either enqueuing the registered script handle `altis-analytics-audience-ui` directly or adding the script as a dependency of your block assets as in the example below:
+
+```php
+add_action( 'enqueue_block_editor_assets', function () {
+  wp_enqueue_script(
+    'my-block',
+    plugins_url( 'my-block.js', __FILE__ ),
+    [
+      // Add the analytics UI script as a dependency.
+      'altis-analytics-audience-ui',
+    ]
+  );
+} );
+```
+
+Using the component will then look like the following:
+
+```js
+// Import the component from the global Altis.Analytics.components object.
+const { AudiencePicker } = Altis.Analytics.components;
+
+// Block editor edit component.
+const Edit = props => {
+  return (
+    <>
+      <InspectorControls>
+        <PanelBody title={ 'Block controls' }>
+          <AudiencePicker
+            label={ __( 'Audience' ) }
+            audience={ props.attributes.audience }
+            onSelect={ audienceId => props.setAttributes( { audience: audienceId } ) }
+            onClearSelection={ () => props.setAttributes( { audience: null } ) }
+          />
+        </PanelBody>
+      </InspectorControls>
+      <div className="my-block">
+        ... block content ...
+      </div>
+    </>
+  );
+}
+```
+
+The component props are:
+
+- **`label`**: A text label for the input.
+- **`audience`**: The currently selected audience ID.
+- **`onSelect`**: Callback to fire when an audience is selected. Passes the audience ID as the first argument and the full audience post object as the second argument.
+- **`onClearSelection`**: Callback to fire when the audience picker selection is cleared.

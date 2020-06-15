@@ -40,6 +40,10 @@ The highly flexible analytics data set is the engine behind features such as [Ex
 
 [Audiences are a powerful tool](./audiences.md) for driving personalisation and gaining insights through testing and reporting.
 
+## Experience Blocks
+
+[Experience Blocks](./experience-blocks.md) not only provide built in editor blocks but also expose the low-level API and HTML markup that powers them.
+
 ## Examples
 
 [Check out the examples](./examples.md) to see some real-world uses of the data.
