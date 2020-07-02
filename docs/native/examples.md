@@ -46,7 +46,7 @@ Altis.Analytics.onReady( function () {
 
 ## Most Popular Posts
 
-This example usese a terms aggregation to return the most common values in descending order for the given field.
+This example uses a terms aggregation to return the most common values in descending order for the given field.
 
 In this case we are looking at all `pageView` events and performing a terms aggregation on the `attributes.postId` field to find the most visited posts.
 
