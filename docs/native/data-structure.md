@@ -27,7 +27,7 @@ A user session covers every event recorded between opening the website and closi
 
 - `event_type`: The type of event recorded, eg. `pageView`, `click`, `_session.start` or `_session.stop`.
 - `event_timestamp`: The timestamp in milliseconds of when the event was recorded on the site.
-- `attributes`: An object of key value pairs. Values can be any string or an array of strings.
+- `attributes`: An object of key value pairs. Values must be a single string.
   - `date`: ISO-8601 standard date string.
   - `session`: Unique ID across all page views.
   - `pageSession`: Unique ID for one page view.
