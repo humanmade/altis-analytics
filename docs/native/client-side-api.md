@@ -38,7 +38,7 @@ The accepted data shape is as follows:
     "PostalCode": string,
     "Region": string
   },
-  "Metrics": { "key": number[], ... },
+  "Metrics": { "key": number, ... },
   "OptOut": string,
   "User": {
     "UserAttributes": { "key": string[], ... },
@@ -62,11 +62,11 @@ Records an event of `eventType`. This can be any string. The optional data passe
 ```js
 {
   attributes: {
-    name: 'value' // <string|string[]>
+    name: [ 'value', '...' ] // <string|string[]>
     // ...
   },
   metrics: {
-    name: 1 // <number|number[]>
+    name: 1 // <number>
     // ...
   },
 }
@@ -76,13 +76,13 @@ Those attributes and metrics can be later queried via Elasticsearch.
 
 ## Extending Event Data
 
-**`Altis.Analytics.registerAttribute( name <string>, value <string | callback> )`**
+**`Altis.Analytics.registerAttribute( name <string>, value <string[] | callback> )`**
 
-Sometimes you may want to record a dynamic attribute value for all events on the page. The `registerAttribute()` allows this. If a function is passed as the value will be evaluated at the time an event recorded.
+Registers a dynamic attribute value for all events recorded on the page. The value can be any string or array of strings. If a function is passed as the value will be evaluated at the time an event recorded. Callbacks support `async/await` or returning a `Promise`.
 
-**`Altis.Analytics.registerMetric( name <string>, value <string | callback> )`**
+**`Altis.Analytics.registerMetric( name <string>, value <number | callback> )`**
 
-Similar to `registerAttribute()` above but for metrics.
+Similar to `registerAttribute()` above but for metrics. Values must be a single number.
 
 ## Audience Functions
 

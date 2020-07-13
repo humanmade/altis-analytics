@@ -27,7 +27,7 @@ A user session covers every event recorded between opening the website and closi
 
 - `event_type`: The type of event recorded, eg. `pageView`, `click`, `_session.start` or `_session.stop`.
 - `event_timestamp`: The timestamp in milliseconds of when the event was recorded on the site.
-- `attributes`
+- `attributes`: An object of key value pairs. Values can be any string or an array of strings.
   - `date`: ISO-8601 standard date string.
   - `session`: Unique ID across all page views.
   - `pageSession`: Unique ID for one page view.
@@ -44,7 +44,7 @@ A user session covers every event recorded between opening the website and closi
   - `qv_*`: Any query string parameters will be recorded with the prefix `qv_`.
   - Any attributes added via the `altis.analytics.data.attributes` filter.
   - Any attributes added via `Altis.Analytics.registerAttribute()` or passed to `Altis.Analytics.record()`.
-- `metrics`
+- `metrics`: An object of name and value pairs. Values must be numbers.
   - `scrollDepthMax`: Maximum scroll depth on page so far. Percentage value between 1-100.
   - `scrollDepthNow`: Scroll depth at time of event. Percentage value between 1-100.
   - `elapsed`: Time elapsed in milliseconds since the start of the page view.
@@ -56,6 +56,10 @@ A user session covers every event recorded between opening the website and closi
   - `Id`: A unique UUID for the endpoint.
   - `Address`: An optional target for push notifications such as an email address or phone number.
   - `OptOut`: The push notification channels this visitor has opted out of. Defaults to "ALL".
+  - `Attributes`: An object of name and value pairs. Values must be a string or array of strings.
+  - `Metrics`: An object of endpoint metrics. This might be used for data like lifetime value.
+    - `sessions`: Number of separate browsing sessions for this endpoint.
+    - `pageViews`: Total number of page view events recorded for this endpoint.
   - `Demographic`
     - `AppVersion`: Current application version, can be provided via the `altis.analytics.data` filter.
     - `Locale`: Locale code of the endpoint, derived from the browser.
@@ -77,4 +81,4 @@ A user session covers every event recorded between opening the website and closi
   - `stop_timestamp`: Time in milliseconds when the subsession ended. Recorded with `_session.stop` events.
   - `duration`: Duration in milliseconds for a subsession. Recorded with `_session.stop` events.
 
-It is important to note that when referencing these fields in a query to use dot notation for nested properties. For example `attributes.date` or `endpoint.Demographic.Model`.
+It is important to note that when referencing these fields in a query to use dot notation for nested properties. For example `attributes.date` or `endpoint.Demographic.Model`. When querying string values you should use the `.keyword` suffix whenever exact matches are required.
