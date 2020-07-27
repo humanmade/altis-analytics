@@ -1,6 +1,6 @@
 ---
 name: Documentation bug report
-about: Help us improve the documentation by keeping it typo free and up to date
+about: Help us improve the documentation by keeping it typo-free and up to date
 title:
 labels: bug, documentation
 assignees:
