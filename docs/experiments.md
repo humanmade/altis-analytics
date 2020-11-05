@@ -35,7 +35,7 @@ It is enabled by default but can be disabled via the configuration file:
 }
 ```
 
-Within the post edit screen click on the lightbulb icon to access the Experiments panel. Here you can set the alternative titles, the amount of traffic to show the tests to as well as start and end dates.
+Within the post edit screen click on the A/B icon to access the Experiments panel. Here you can set the alternative titles, the amount of traffic to show the tests to as well as start and end dates.
 
 Once you are ready to run the test click on the toggle to unpause it. Results are updated every hour until a statistically significant winner is found.
 
