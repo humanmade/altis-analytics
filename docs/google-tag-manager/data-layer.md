@@ -1,6 +1,6 @@
 # Data Layer
 
-Google Tag Manager provides a lot of variables out of the box that can be used in triggers and also in tags themselves however sometimes you need some additional data from the application itself.
+Google Tag Manager (GTM) provides a lot of variables out of the box that can be used in triggers and also in tags themselves however sometimes you need some additional data from the application itself.
 
 You can supply this extra data via GTM's data layer feature.
 
