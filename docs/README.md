@@ -6,7 +6,7 @@ Analytics is the gathering, understanding and application of data to measure, im
 
 ## Native Analytics
 
-Altis provides its own analytics layer as part of the infrastructure by default. This provides numerous benefits, not only from the perspective of GDPR, privacy, and owning your data but it enables powerful features including real time stats, AB testing, and personalization.
+Altis provides its own analytics layer as part of the infrastructure by default. This provides numerous benefits, not only from the perspective of GDPR, privacy, and owning your data but it enables powerful features including real time stats, A/B testing, and personalization.
 
 [Read more about native Altis Analytics](./native.md)
 
