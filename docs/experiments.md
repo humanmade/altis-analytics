@@ -35,7 +35,7 @@ It is enabled by default but can be disabled via the configuration file:
 }
 ```
 
-Within the post edit screen click on the lightbulb icon to access the Experiments panel. Here you can set the alternative titles, the amount of traffic to show the tests to as well as start and end dates.
+Within the post edit screen click on the A/B icon to access the Experiments panel. Here you can set the alternative titles, the amount of traffic to show the tests to as well as start and end dates.
 
 Once you are ready to run the test click on the toggle to unpause it. Results are updated every hour until a statistically significant winner is found.
 
@@ -65,11 +65,11 @@ Sets up the test.
   - `goal <string>`: The conversion goal event name, eg "click" or "click:.selector a".
   - `goal_filter <string | callable>`: Elasticsearch bool query to filter goal results. If a callable is passed it receives the test ID and post ID as arguments.
   - `query_filter <string | callable>`: Elasticsearch bool query to filter total events being queried. If a callable is passed it receives the test ID and post ID as arguments.
-  - `variant_callback <callable>`: An optional callback used to render variants based. Arguments:
+  - `variant_callback <callable>`: An optional callback used to render variants based.
     - `$value <mixed>`: The variant value.
     - `$post_id <int>`: The post ID.
     - `$args <array>`: Optional args passed to `output_ab_test_html_for_post()`.
-  - `winner_callback <callable>`: An optional callback used to perform updates to the post when a winner is found. Defaults to no-op. Arguments:
+  - `winner_callback <callable>`: An optional callback used to perform updates to the post when a winner is found. Defaults to no-op.
     - `$post_id <int>`: The post ID
     - `$value <mixed>`: The winning variant value.
   - `post_types <array>`: An array of supported post types for the test.
