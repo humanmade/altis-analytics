@@ -63,6 +63,8 @@ Sets up the test.
   - `rest_api_variants_field <string>`: The field name to make variants available at.
   - `rest_api_variants_type <string>`:  The data type of the variants.
   - `goal <string>`: The conversion goal event name, eg "click" or "click:.selector a".
+  - `selector <string>`: A CSS selector for a child element to bind the event to.
+  - `closest <string>`: A CSS selector for the closest matching parent element to bind the event to. Applied before `selector`.
   - `goal_filter <string | callable>`: Elasticsearch bool query to filter goal results. If a callable is passed it receives the test ID and post ID as arguments.
   - `query_filter <string | callable>`: Elasticsearch bool query to filter total events being queried. If a callable is passed it receives the test ID and post ID as arguments.
   - `variant_callback <callable>`: An optional callback used to render variants based.
@@ -111,54 +113,7 @@ add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_thumbnail_i
 
 ### Goal Tracking
 
-Conversion goals are how it is determined whether a variant has been successful or not. This is calculated as the `number of conversions / number of impressions`.
-
-The `click` goal handler is provided out of the box and adds a click event handler to the nearest `<a>` tag.
-
-#### Scoped Event Handling
-
-For tests where more complex alternative HTML is being rendered you can define the event target with a CSS selector.
-
-For example setting the goal to `click:.my-target` will track a conversion when the element in the variant HTML matching `.my-target` is clicked. This applies for all registered goal handlers.
-
-#### Custom Goal Handlers
-
-You can define your own goal handlers in JavaScript:
-
-**`Altis.Analytics.Experiments.registerGoal( name <string>, callback <function>, closest <array> )`**
-
-This function adds a goal handler where `name` corresponds to the value of `$options['goal']` when registering an AB Test.
-
-The callback receives the following parameters:
-
-- `element <HTMLElement>`: Target node for the event.
-- `record <function>`: Receives the target element and a callback to log the conversion. The function accepts two optional arguments:
-  - `attributes <object>`: Custom attributes to record with the event.
-  - `metrics <object>`: Custom metrics to record with the event.
-
-The `closest` parameter allows you to ensure the element passed to your callback is of a certain type, achieved by stepping up through the DOM tree, for example to return only anchor tags you would pass `[ 'a' ]`.
-
-```js
-Altis.Analytics.Experiments.registerGoal( 'scrollIntoView', function ( element, record ) {
-	var listener = function () {
-		// Check element has come into view or not.
-		if ( element.getBoundingClientRect().top > window.innerHeight ) {
-			return;
-		}
-
-		// Remove event listener immediately.
-		window.removeEventListener( 'scroll', listener );
-
-		// Record event.
-		record();
-	};
-
-	// Start listening to scroll events.
-	window.addEventListener( 'scroll', listener );
-} );
-```
-
-**Note:** This JavaScript should be enqueued in the `<head>` via the `wp_enqueue_scripts` action.
+The [goal tracking framework is explained in more detail here](./goal-tracking.md). A built in click event goal is available out of the box which is used by the built in title A/B test feature.
 
 ### Variant Data Storage
 
