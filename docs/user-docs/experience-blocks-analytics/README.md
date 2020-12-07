@@ -32,3 +32,7 @@ However, you can change the conversion goal to any of the available options and 
 ![Update the conversion goal](../assets/set-cta-goal.gif)
 
 ## Measuring performance
+
+Once you have added personalized content and audiences to your post and have published them, you will be able to see the number of XB views per variant in the sidebar on the right when you click on the Personalized Content block. If you added a conversion goal to your personalized content blocks, you will be able to see the percentage conversion against the total number of views for each block. To compare how well your personalized content is performing, you must have a fallback variant to compare the personalized content metrics against.
+
+![XB Analytics](../assets/xb-analytics.png)
