@@ -29,6 +29,8 @@ There are three ways that you can track conversions built into Altis Experience 
 
 However, you can change the conversion goal to any of the available options and the goal tracking will reflect the new goal after the post is updated. Any action of the type selected (clicking a link or submitting a form) will mark a conversion that will be tracked for that variant.
 
+If the built-in conversion rules are not sufficient for your project, it is possible for custom conversion goals to be developed that fit the needs of your site.
+
 ![Update the conversion goal](../assets/set-cta-goal.gif)
 
 ## Measuring performance
