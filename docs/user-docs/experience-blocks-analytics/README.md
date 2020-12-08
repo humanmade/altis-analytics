@@ -23,7 +23,7 @@ You can create new audiences within the content editing experience or from the A
 
 ## Add conversion goals to measure engagement
 
-There are three ways that you can track conversions built into Altis Experience Blocks. These are "Impressions", "Click on any link" and "Submit a form". By default, impressions will be selected, and the statistics that display will be based on that data.
+There are three ways that you can track conversions built into Altis Experience Blocks. These are "Impressions", "Click on any link" and "Submit a form". By default, impressions will be selected, and the statistics that display will be based on that data. Impressions are based on actual views of the XB; if a block appears further down the page, a view isn't recorded until the block is actually scrolled into view.
 
 ![Impressions](../assets/conversions-impressions.png)
 
