@@ -16,7 +16,7 @@ Next you'll want to create some personalized content to make the user's experien
 
 ## Creating audiences
 
-You can create new audiences within the content editing experience or from the Audiences page in the admin. In either case, the process is the same. Within the New Audience screen, you can give your audience a name, and set the variables in the dropdowns to determine how to identify this segment of users, for example browser or geographic region. Once the audience is set, you can use that to deliver unique content based on the parameters you've set. Before you can use the audience, switch the audience to Active on the right hand side. Now the audience is ready to be used in your personalized content!
+You can create new audiences within the content editing experience or from the Audiences page in the admin. In either case, the process is the same. Within the New Audience screen, you can give your audience a name, and set the variables in the dropdowns to determine how to identify this segment of users, for example browser or geographic region. Once the audience is set, users matching the audience criteria will be delivered their personalized content. Before you can use the audience, switch the audience to Active on the right hand side. Now the audience is ready to be used in your personalized content!
 
 ![Personalized content](../assets/personalized-content.gif)
 
