@@ -159,7 +159,7 @@ function setup_notifications() {
 /**
  * Add additional endpoint data based on CloudFront headers.
  *
- * @param array $data
+ * @param array $data The endpoint data array.
  * @return array
  */
 function add_endpoint_data( array $data ) : array {
