@@ -54,3 +54,7 @@ add_filter( 'hm_gtm_network_id', function ( string $id ) : string {
 ```
 
 **Note** it is not recommended practice to do this, instead you should provide any conditional context you need via [the `dataLayer` variable](data-layer.md) and load all tags from a single container if possible.
+
+## Cookie Consent Integration
+
+Altis provides support out of the box for checking cookie consent in Google Tag Manager via the Altis Privacy module. You can [learn how to configure Google Tag Manager for cookie consent here](docs://privacy/consent/google-tag-manager.md).

@@ -9,17 +9,29 @@ New indexes are automatically created every day.
 The are two key concepts to understand the analytics data itself:
 
 - **Endpoints**
+  - Persistent data
   - Correspond to a unique device & browser combination
-  - Can be associated with a known user account via the `Endpoint.User.UserId` property. This is done automatically for logged in users.
-  - Persist across sessions
+  - Can be associated with a known user account via the `endpoint.User.UserId` property. This is done automatically for logged in users.
   - Updated via the `Altis.Analytics.updateEndpoint()` function
 - **Events**
+  - Point in time data specific to the current URL or user action
   - Has to be of a specific "type" eg. "pageView"
   - Can have custom attributes and metrics
-  - Data for the current endpoint is merged in
   - Created via the `Altis.Analytics.record()` function
 
 _The most important thing to note is that the endpoint data is merged into events, not provided when recording the events._
+
+### Privacy
+
+In order to protect your users privacy it is vital to follow these guidelines to get the most out of the built-in integration with the [Altis Privacy module Consent feature](docs://privacy/consent/README.md).
+
+- Event attributes and metrics should only contain data related directly to the event or URL
+- Endpoint attributes and metrics should only ever contain broad demographic data used for creating audiences
+- Any personally identifiable information or other private user data that needs to be tracked should be stored as user attributes under the `endpoint.User.UserAttributes` property
+
+The `endpoint.User.UserId` value is automatically populated for logged in users, however, if users have not consented to the `statistics` category of cookies the user ID and user attributes are not recorded. Only `statistics-anonymous` consent is opted into by default.
+
+You can [learn more about privacy with Altis Native Analytics here](./privacy.md ).
 
 ## Anatomy of an Event Record
 
