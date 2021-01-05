@@ -23,7 +23,7 @@ _The most important thing to note is that the endpoint data is merged into event
 
 ### Privacy
 
-In order to protect your users privacy it is vital to follow these guidelines to get the most out of the built in integration with the [Altis Privacy module Consent feature](docs://privacy/consent/README.md).
+In order to protect your users privacy it is vital to follow these guidelines to get the most out of the built-in integration with the [Altis Privacy module Consent feature](docs://privacy/consent/README.md).
 
 - Event attributes and metrics should only contain data related directly to the event or URL
 - Endpoint attributes and metrics should only ever contain broad demographic data used for creating audiences
