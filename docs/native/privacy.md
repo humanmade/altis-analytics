@@ -15,7 +15,7 @@ add_filter( 'altis.consent.allowlisted_categories', function () {
 } );
 ```
 
-Without the `statistics` category of consent the `endpoint.User` data will be stripped from the data sent to Altis Analytics. To help protect your user's privacy any personally identifiable information should only ever be stored under the `endpoint.User.UserAttributes` property. You can read more about this in the section on [Data Structure](./data-structure.md).
+Without the `statistics` category of consent, the `endpoint.User` data will be stripped from the data sent to Altis Analytics. To help protect your user's privacy, any personally identifiable information should only ever be stored under the `endpoint.User.UserAttributes` property. You can read more about this in the section on [Data Structure](./data-structure.md).
 
 ## Data Retention
 
