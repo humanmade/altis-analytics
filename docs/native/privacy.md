@@ -6,7 +6,7 @@ Altis Analytics by default does not record visitor IP addresses to help protect 
 
 Altis Analytics integrates natively with the [Altis Privacy module Consent feature](docs://privacy/consent/README.md) and requires the `statistics-anonymous` category to be consented to at a minimum.
 
-While the `statistics-anonymous` consent category is opted into by default that can be changed via a filter if you have strict requirements regarding tracking.
+While the `statistics-anonymous` consent category is opted into by default, that option can be changed via a filter if you have strict requirements regarding tracking.
 
 ```php
 // Only allow functional cookies by default.
