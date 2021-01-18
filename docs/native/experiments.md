@@ -1,6 +1,6 @@
 # Experiments
 
-Backed by [native Altis Analytics](./native.md) Experiments are a powerful tool for optimizing content and measuring the effectiveness of changes to the site.
+Backed by [native Altis Analytics](./native.md), Experiments are a powerful tool for optimizing content and measuring the effectiveness of changes to the site.
 
 The feature is enabled by default and provides a developer API for creating custom experiments as well as some built in features.
 
