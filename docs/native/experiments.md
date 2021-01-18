@@ -13,7 +13,7 @@ The following built in experiments are provided:
 
 ### Post Title A/B Tests
 
-With this feature enabled it's simple to create AB Tests for your post titles directly from the post edit screen.
+With this feature enabled it's simple to create A/B Tests for your post titles directly from the post edit screen.
 
 It is enabled by default but can be disabled via the configuration file:
 
@@ -39,9 +39,9 @@ Within the post edit screen click on the A/B icon to access the Experiments pane
 
 Once you are ready to run the test click on the toggle to unpause it. Results are updated every hour until a statistically significant winner is found.
 
-![AB Testing Titles user interface](./assets/ab-tests-titles.png)
+![A/B Testing Titles user interface](./assets/ab-tests-titles.png)
 
-By default post title AB tests are enabled for Posts and Pages however custom post types can be supported using the `altis.experiments.titles` key either when registering the post type or in the `init` action, for example:
+By default post title A/B tests are enabled for Posts and Pages however custom post types can be supported using the `altis.experiments.titles` key either when registering the post type or in the `init` action, for example:
 
 ```php
 add_action( 'init', function () {
@@ -51,7 +51,7 @@ add_action( 'init', function () {
 
 ## Creating Custom Tests
 
-There is a programmatic API to register AB tests for posts:
+There is a programmatic API to register A/B tests for posts:
 
 **`register_post_ab_test( string $test_id, array $options )`**
 
@@ -78,7 +78,7 @@ Sets up the test.
 
 **`output_ab_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
 
-Returns the AB Test markup for client side processing.
+Returns the A/B Test markup for client side processing.
 
 - `$test_id`: A unique ID for the test.
 - `$post_id`: The post ID for the test.
