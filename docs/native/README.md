@@ -20,11 +20,11 @@ Analytics data is stored in an S3 data lake and delivered to Elasticsearch where
 
 The data is queried from Elasticsearch in the application providing a powerful query language with filtering and aggregations for collecting statistics and other metrics.
 
-Altis Analytics can power features such as popular posts widgets, personalisation and AB tests.
+Altis Analytics can power features such as popular posts widgets, personalisation and A/B tests.
 
 ## Data Structure
 
-The highly flexible analytics data set is the engine behind features such as [Experience Blocks](https://www.altis-dxp.com/experience-blocks/), [audiences](./audiences.md) and [AB testing](../experiments.md).
+The highly flexible analytics data set is the engine behind features such as [Experience Blocks](https://www.altis-dxp.com/experience-blocks/), [audiences](./audiences.md) and [A/B testing](../experiments.md).
 
 [Learn how the data structured in detail here](./data-structure.md).
 
