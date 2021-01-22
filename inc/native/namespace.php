@@ -5,8 +5,8 @@
 
 namespace Altis\Analytics\Native;
 
+use Altis;
 use const Altis\ROOT_DIR;
-use function Altis\Enhanced_Search\get_elasticsearch_url;
 use function Altis\Experiments\get_ab_test_variants_for_post;
 use function Altis\Experiments\get_post_ab_test;
 use function Altis\get_config;
@@ -20,9 +20,25 @@ use HM\Workflows\Workflow;
 function bootstrap() {
 	$config = get_config()['modules']['analytics']['native'];
 
+	// Check if Elasticsearch is available before loading.
+	if ( ! defined( 'ELASTICSEARCH_HOST' ) ) {
+		if ( Altis\get_environment_type() === 'local' ) {
+			trigger_error( 'Altis Native Analytics is enabled but Elasticsearch is not configured. You may have the service switched off on your local environment.', E_USER_WARNING );
+		} else {
+			trigger_error( 'Altis Native Analytics is enabled but Elasticsearch is not configured. Please contact support if you wish to use this feature.', E_USER_WARNING );
+		}
+		return;
+	}
+
 	// Set Analytics plugin to use core Elasticsearch instance.
-	add_filter( 'altis.analytics.elasticsearch.url', function () {
-		return get_elasticsearch_url();
+	add_filter( 'altis.analytics.elasticsearch.url', function ( $url ) {
+		if ( function_exists( 'Altis\\Cloud\\get_elasticsearch_url' ) ) {
+			return Altis\Cloud\get_elasticsearch_url();
+		}
+		if ( function_exists( 'Altis\\Enhanced_Search\\get_elasticsearch_url' ) ) {
+			return Altis\Enhanced_Search\get_elasticsearch_url();
+		}
+		return $url;
 	} );
 
 	// Set data retention period.
