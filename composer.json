@@ -23,6 +23,12 @@
         ]
     },
     "extra": {
-        "altis": {}
+        "altis": {
+            "install-overrides": [
+                "altis/aws-analytics",
+                "altis/experiments",
+                "humanmade/hm-gtm"
+            ]
+        }
     }
 }
