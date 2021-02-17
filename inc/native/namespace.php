@@ -91,7 +91,7 @@ function setup_notifications() {
 	}
 
 	// Remove default notifications.
-	remove_action( 'altis.experiments.test.ended', 'Altis\\Experiments\\send_post_ab_test_notification', 10, 2 );
+	remove_action( 'altis.experiments.test.ended', 'Altis\\Analytics\\Experiments\\send_post_ab_test_notification', 10, 2 );
 
 	// Experiment events.
 	$events = [
