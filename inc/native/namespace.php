@@ -6,7 +6,6 @@
 namespace Altis\Analytics\Native;
 
 use Altis;
-use const Altis\ROOT_DIR;
 use function Altis\Experiments\get_ab_test_variants_for_post;
 use function Altis\Experiments\get_post_ab_test;
 use function Altis\get_config;
@@ -46,8 +45,6 @@ function bootstrap() {
 
 	// Load Experiments.
 	if ( $config['experiments'] ) {
-		load_experiments();
-
 		// Enable/Disable Experiments Features.
 		if ( is_array( $config['experiments'] ) ) {
 			foreach ( $config['experiments'] as $feature => $enabled ) {
@@ -85,13 +82,6 @@ function set_data_retention_days( int $days ) : int {
 }
 
 /**
- * Load Experiments plugin.
- */
-function load_experiments() {
-	require_once ROOT_DIR . '/vendor/altis/experiments/plugin.php';
-}
-
-/**
  * Hook into the workflow module for experiment notifications.
  */
 function setup_notifications() {
@@ -101,7 +91,7 @@ function setup_notifications() {
 	}
 
 	// Remove default notifications.
-	remove_action( 'altis.experiments.test.ended', 'Altis\\Experiments\\send_post_ab_test_notification', 10, 2 );
+	remove_action( 'altis.experiments.test.ended', 'Altis\\Analytics\\Experiments\\send_post_ab_test_notification', 10, 2 );
 
 	// Experiment events.
 	$events = [
