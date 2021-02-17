@@ -46,8 +46,6 @@ function bootstrap() {
 
 	// Load Experiments.
 	if ( $config['experiments'] ) {
-		load_experiments();
-
 		// Enable/Disable Experiments Features.
 		if ( is_array( $config['experiments'] ) ) {
 			foreach ( $config['experiments'] as $feature => $enabled ) {
@@ -82,13 +80,6 @@ function set_data_retention_days( int $days ) : int {
 		return get_config()['modules']['analytics']['native']['data-retention-days'];
 	}
 	return $days;
-}
-
-/**
- * Load Experiments plugin.
- */
-function load_experiments() {
-	require_once ROOT_DIR . '/vendor/altis/experiments/plugin.php';
 }
 
 /**
