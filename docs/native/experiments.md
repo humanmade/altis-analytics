@@ -39,7 +39,7 @@ Within the post edit screen click on the A/B icon to access the Experiments pane
 
 Once you are ready to run the test click on the toggle to unpause it. Results are updated every hour until a statistically significant winner is found.
 
-![A/B Testing Titles user interface](./assets/ab-tests-titles.png)
+![A/B Testing Titles user interface](../assets/ab-tests-titles.png)
 
 By default post title A/B tests are enabled for Posts and Pages however custom post types can be supported using the `altis.experiments.titles` key either when registering the post type or in the `init` action, for example:
 
