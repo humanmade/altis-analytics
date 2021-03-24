@@ -24,7 +24,7 @@ Altis Analytics can power features such as popular posts widgets, personalisatio
 
 ## Data Structure
 
-The highly flexible analytics data set is the engine behind features such as [Experience Blocks](https://www.altis-dxp.com/experience-blocks/), [audiences](./audiences.md) and [A/B testing](../experiments.md).
+The highly flexible analytics data set is the engine behind features such as [Experience Blocks](https://www.altis-dxp.com/experience-blocks/), [audiences](./audiences.md) and [A/B testing](./experiments.md).
 
 [Learn how the data structured in detail here](./data-structure.md).
 
