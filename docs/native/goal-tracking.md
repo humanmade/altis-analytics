@@ -11,15 +11,15 @@ Registered goals are available to select in the admin when configuring experienc
 
 ### PHP
 
-**`Altis\Analytics\Experiments\register_goal( string $name, string $label, string $event, ?string $selector, ?string $closest )`**
+**`Altis\Analytics\Experiments\register_goal( string $name, array $args = [] )`**
 
 - `$name` is a string ID you can use to reference the goal later.
-- `$label` is a human readable label for the goal such as "Click any link".
-- `$event` is the name of a JavaScript event like `click`, `submit`, `scroll` and so on.
-- `$selector` is an optional CSS selector if the event listener should be bound to a specific target.
-- `$closest` is an optional CSS selector for binding the event listener to a parent element.
-
-
+- `$args` is an array of options:
+  - `string $args['label']`: A human readable label for the goal. Defaults to $name.
+  - `string $args['event']`: The JS event to trigger on. Defaults to $name.
+  - `string $args['selector']`: An optional CSS selector to scope the event to.
+  - `string $args['closest']`: An optional CSS selector for finding the closest matching parent to bind the event to.
+  - `string $args['validation_message']` An optional message to show if the variant is missing the selector.
 ### JavaScript
 
 Goals registered client side behave a little differently. They can be completely custom goals that are not registered in PHP but they can also be used to enhance server-side registered goals by defining the callback used to bind the event listener.
@@ -69,10 +69,14 @@ To gain more control over the elements that the event is bound to you can specif
 
 For example, the built in goal for "Click on any link" is registered like so with the selector `a`:
 
-```
+```php
 namespace Altis\Analytics\Experiments;
 
-register_goal( 'click_any_link', __( 'Click any link' ), 'click', 'a' );
+register_goal( 'click_any_link', [
+    'label' => __( 'Click any link' ),
+    'event' => 'click',
+    'selector' => 'a',
+] );
 ```
 
 For the built titles A/B test feature the selector is empty but `closest` is set to `a` because it is replacing only the post title text and not the markup around it.

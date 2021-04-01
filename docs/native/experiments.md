@@ -53,7 +53,7 @@ add_action( 'init', function () {
 
 There is a programmatic API to register A/B tests for posts:
 
-**`register_post_ab_test( string $test_id, array $options )`**
+**`Altis\Analytics\Experiments\register_post_ab_test( string $test_id, array $options )`**
 
 Sets up the test.
 
@@ -86,7 +86,7 @@ Returns the A/B Test markup for client side processing.
 - `$args`: An optional array of data to pass through to `variant_callback`.
 
 ```php
-namespace Altis\Experiments;
+namespace Altis\Analytics\Experiments;
 
 // Register the test.
 register_post_ab_test( 'featured_images', [
@@ -119,7 +119,7 @@ The [goal tracking framework is explained in more detail here](./goal-tracking.m
 
 How you manage the variant data is up to you, for example you could use Fieldmanager, CMB2 or other custom meta boxes framework to save the variant data.
 
-Note you should use the following functions to get and update the variants:
+Note you should use the following functions to get and update the variants. All functions are under the `Altis\Analytics\Experiments` namespace:
 
 **`get_ab_test_variants_for_post( string $test_id, int $post_id ) : array`**
 

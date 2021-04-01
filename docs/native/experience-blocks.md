@@ -22,6 +22,9 @@ The markup makes use of the `<template>` tag along with the web component and da
 <template data-fallback data-parent-id="abcdef">
 	<p>Fallback content for everyone else</p>
 </template>
+<noscript>
+	<p>Fallback content for everyone else</p>
+</noscript>
 <!-- The HTML tag can not be self-closing. -->
 <personalization-block client-id="abcdef"></personalization-block>
 ```
