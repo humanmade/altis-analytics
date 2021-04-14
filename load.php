@@ -16,7 +16,7 @@ add_action( 'altis.modules.init', function () {
 			'experiments' => [
 				'titles' => true,
 			],
-			'data-retention-days' => 14,
+			'data-retention-days' => 90,
 		],
 		'google-tag-manager' => [
 			'network' => '',
