@@ -66,6 +66,7 @@ function bootstrap() {
 
 	// Post cloner integration.
 	add_filter( 'post_cloner_meta_patterns_to_remove', __NAMESPACE__ . '\\post_cloner_meta_patterns_to_remove' );
+	add_filter( 'post_cloner_duplicate_post', __NAMESPACE__ . '\\post_cloner_update_xb_client_ids' );
 }
 
 /**
@@ -191,4 +192,22 @@ function post_cloner_meta_patterns_to_remove( array $patterns ) : array {
 	// Ignore AB test data.
 	$patterns[] = '/^_altis_ab_test_.*/';
 	return $patterns;
+}
+
+/**
+ * Update XB client IDs when cloning a post.
+ *
+ * @param array $post The duplicated post data.
+ * @return array
+ */
+function post_cloner_update_xb_client_ids( array $post ): array {
+	$post['post_content'] = preg_replace_callback(
+		'#<!-- wp:altis/(personalization|experiment)\s+{.*?"clientId":"([a-z0-9-]+)"#',
+		function ( array $matches ) : string {
+			return str_replace( $matches[2], wp_generate_uuid4(), $matches[0] );
+		},
+		$post['post_content']
+	);
+
+	return $post;
 }
