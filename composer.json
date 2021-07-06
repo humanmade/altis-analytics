@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.1",
         "humanmade/hm-gtm": "~2.0.2",
-        "altis/aws-analytics": "~2.4.0",
+        "altis/aws-analytics": "~2.5.2",
         "altis/experiments": "~2.3.0"
     },
     "license": "GPL-2.0",
