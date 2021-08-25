@@ -4,7 +4,7 @@ Audiences are user-defined categories of users, based on conditions related to t
 
 Audiences allow for the creation of conditions to narrow down event queries or endpoints but also can be used for determining effects on the client side.
 
-[Experience Blocks](https://www.altis-dxp.com/experience-blocks/) make use of audience data to personalise content for example.
+[Experience Blocks](https://www.altis-dxp.com/personalisation/) make use of audience data to personalise content for example.
 
 ## Mapping Event Data
 
