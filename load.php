@@ -24,5 +24,8 @@ add_action( 'altis.modules.init', function () {
 			'event-tracking' => false,
 		],
 	];
-	register_module( 'analytics', __DIR__, 'Analytics', $default_settings, __NAMESPACE__ . '\\bootstrap' );
+	$options = [
+		'defaults' => $default_settings,
+	];
+	register_module( 'analytics', __DIR__, 'Analytics', $options, __NAMESPACE__ . '\\bootstrap' );
 } );
