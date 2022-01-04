@@ -87,7 +87,7 @@ Returns the A/B Test markup for client side processing.
 - `$default_content`: The default content for the control test.
 - `$args`: An optional array of data to pass through to `variant_callback`.
 
-### Example basic test in PHP
+### Example basic test
 
 An example for testing a CTA (call to action) button with different text would look like:
 
@@ -117,7 +117,7 @@ add_action( 'init', function() {
 } );
 ```
 
-### Example test with JS control
+### Example test with a custom JS control
 
 If the value of the variant is not strictly textual, a custom control might be needed to use within the Experiement Side Panel of the Editor, which will need to be registered in the following way:
 
@@ -134,7 +134,7 @@ add_action( 'init', function() {
 			return render_the_custom_cta_callback( $variant_value, $post_id, $some_extra_args );
 		},
 		'editor_scripts' => [
-			'url/to/script.js' => [
+			'url/to/feature.js' => [
 				'wp-blocks',
 				'wp-i18n',
 				'wp-plugins',
@@ -158,7 +158,7 @@ add_action( 'init', function() {
 To register a custom editor input, and override some of the test options.
 
 ```js
-// feature-edit.js
+// feature.js
 
 import { EditControl, PreviewControl, ControlContainer } from 'some/custom/library';
 
