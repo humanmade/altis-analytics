@@ -1,7 +1,7 @@
 
 # Goal Tracking
 
-Conversions goals help you measure the performance of aspects of your site. With Altis Native Analytics you can use the [client-side API](./client-side-api.md) to track any events you wish, however, some goal tracking is integrated into [Altis Optimization Framework](../optimization-framework/) features like [Experiments](./optimization-framework/experiments/) and [Experience Blocks](./optimization-framework/personalization/experience-blocks.md).
+Conversions goals help you measure the performance of aspects of your site. With Altis Native Analytics you can use the [client-side API](./client-side-api.md) to track any events you wish, however, some goal tracking is integrated into [Altis Optimization Framework](../../optimization-framework/) features like [A/B Testing](../../optimization-framework/ab-testing.md) and [Experience Blocks](../../optimization-framework/experience-blocks.md).
 
 Conversion goals allow us to determine whether an A/B test variant has been successful or not and whether some personalised content is out performing others. The goal conversion rate is generally calculated as the `number of conversions / number of impressions`.
 

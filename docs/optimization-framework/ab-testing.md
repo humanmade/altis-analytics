@@ -1,14 +1,14 @@
 # A/B Tests
 
-[A/B Tests](./ab-tests.md) provides the tools to carry out randomized experiments using different variations of content features, eg: titles and featured images, and/or different variations of content blocks.
+A/B Tests provides the tools to carry out randomized experiments using different variations of content features, eg: titles and featured images, and/or different variations of content blocks.
+
+Altis provides an A/B Test Block, which you can use to test different variations of a block / set of blocks. And also a developer friendly framework to test different content features like Title and Featured Images, which can typically be controlled from the Block Editor sidebar.
 
 Tests run until the end date or when a statistically significant improvement has been found, when a winner is found the winning variant will be shown to everyone.
 
-Altis provides an A/B Test Block, which you can use to test different variations of a block / set of blocks. And also a developer friendly framework to test different content features like Title and Featured Images, which can be controlled from the Block Editor sidebar.
+## Post titles and featured images A/B Tests
 
-## Post Title A/B Tests
-
-With this feature enabled it's simple to create A/B Tests for your post titles directly from the post edit screen.
+With this feature enabled it's simple to create A/B Tests for your post titles and/or featured images directly from the post edit screen.
 
 It is enabled by default but can be disabled via the configuration file:
 
@@ -20,7 +20,8 @@ It is enabled by default but can be disabled via the configuration file:
 				"analytics": {
 					"native": {
 						"experiments": {
-							"titles": false
+							"titles": false,
+							"featured_images": false
 						}
 					}
 				}
@@ -30,19 +31,23 @@ It is enabled by default but can be disabled via the configuration file:
 }
 ```
 
-Within the post edit screen click on the A/B icon to access the Experiments panel. Here you can set the alternative titles, the amount of traffic to show the tests to as well as start and end dates.
+Within the post edit screen click on the A/B icon to access the Experiments panel. Here you can set the alternative titles and/or alternative featured images, the amount of traffic to show the tests to as well as start and end dates.
 
 Once you are ready to run the test click on the toggle to unpause it. Results are updated every hour until a statistically significant winner is found.
 
 ![A/B Testing Titles user interface](../assets/ab-tests-titles.png)
 
-By default post title A/B tests are enabled for Posts and Pages however custom post types can be supported using the `altis.experiments.titles` key either when registering the post type or in the `init` action, for example:
+By default post title and featured image A/B tests are enabled for Posts and Pages however custom post types can be supported using the `altis.experiments.titles` key either when registering the post type or in the `init` action, for example:
 
 ```php
 add_action( 'init', function () {
 	add_post_type_support( 'events', 'altis.experiments.titles' );
+	// and/or..
+	add_post_type_support( 'events', 'altis.experiments.featured_images' );
 } );
 ```
+
+Note that in order for the test to function correctly, it needs WordPress to output the `<ab-test></ab-test>` Web Component that includes all the variations of the feature representation, so the front-end would be able to switch to the proper variation to serve to the visitor. And such, the built-in features will only work if the native functions are used, which are `the_title` / `get_the_title` (for post title) and `the_post_thumbnail` / `get_the_post_thumbnail` (for featured image).
 
 ## Creating Custom Tests
 
@@ -67,9 +72,11 @@ Sets up the test.
     - `$post_id <int>`: The post ID.
     - `$args <array>`: Optional args passed to `output_ab_test_html_for_post()`.
   - `winner_callback <callable>`: An optional callback used to perform updates to the post when a winner is found. Defaults to no-op.
-    - `$post_id <int>`: The post ID
+    - `$post_id <int>`: The post ID.
     - `$value <mixed>`: The winning variant value.
   - `post_types <array>`: An array of supported post types for the test.
+  - `show_ui <bool>`: Whether to show the test in the Experiments sidebar of the Block Editor.
+  - `editor_scripts <array>`: An array of scripts to load for this test within the Block Editor, and dependencies for each (see example).
 
 **`output_ab_test_html_for_post( string $test_id, int $post_id, string $default_content, array $args = [] )`**
 
@@ -80,30 +87,141 @@ Returns the A/B Test markup for client side processing.
 - `$default_content`: The default content for the control test.
 - `$args`: An optional array of data to pass through to `variant_callback`.
 
+### Example basic test in PHP
+
+An example for testing a CTA (call to action) button with different text would look like:
+
 ```php
+// feature.php
+
 namespace Altis\Analytics\Experiments;
 
-// Register the test.
-register_post_ab_test( 'featured_images', [
-	'rest_api_variants_type' => 'integer',
-	'goal' => 'click',
-	'variant_callback' => function ( $attachment_id, $post_id, $args ) {
-		return wp_get_attachment_image(
-			$attachment_id,
-			$args['size'],
-			false,
-			$args['attr']
-		);
-	}
-] );
+add_action( 'init', function() {
 
-// Apply the test by filtering some standard output.
-add_filter( 'post_thumbnail_html', function ( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	return output_ab_test_html_for_post( 'featured_images', $post_id, $html, [
-		'size' => $size,
-		'attr' => $attr,
+	// Register the test.
+	register_post_ab_test( 'cta_button_text', [
+		'rest_api_variants_type' => 'string',
+		'goal' => 'click',
+		'variant_callback' => function ( $variant_value, $post_id, $some_extra_args ) {
+			return render_the_custom_cta_callback( $variant_value, $post_id, $some_extra_args );
+		},
 	] );
-}, 10, 5 );
+
+	// Apply the test by using `output_ab_test_html_for_post`.
+	add_action( 'the_custom_cta', function () {
+		$post_id = get_the_ID();
+
+		return output_ab_test_html_for_post( 'cta_button_text', $post_id, $some_extra_args );
+	}, 10, 5 );
+
+} );
+```
+
+### Example test with JS control
+
+If the value of the variant is not strictly textual, a custom control might be needed to use within the Experiement Side Panel of the Editor, which will need to be registered in the following way:
+
+```php
+// feature.php
+
+add_action( 'init', function() {
+
+	// Register the test.
+	register_post_ab_test( 'cta_button_style', [
+		'rest_api_variants_type' => 'string',
+		'goal' => 'click',
+		'variant_callback' => function ( $variant_value, $post_id, $some_extra_args ) {
+			return render_the_custom_cta_callback( $variant_value, $post_id, $some_extra_args );
+		},
+		'editor_scripts' => [
+			'url/to/script.js' => [
+				'wp-blocks',
+				'wp-i18n',
+				'wp-plugins',
+				'wp-editor',
+				'wp-components',
+				'wp-core-data',
+				'wp-edit-post',
+				'...',
+			],
+		],
+	] );
+
+	// Apply the test by using `output_ab_test_html_for_post`.
+	add_action( 'the_custom_cta', function () {
+		return output_ab_test_html_for_post( 'cta_button_style', get_the_ID(), $some_extra_args );
+	}, 10, 5 );
+
+} );
+```
+
+To register a custom editor input, and override some of the test options.
+
+```js
+// feature-edit.js
+
+import { EditControl, PreviewControl, ControlContainer } from 'some/custom/library';
+
+/**
+ * Custom input component
+ *
+ * @param {React.ComponentProps} props The component props.
+ * @returns {React.ReactNode} Image input field component.
+ */
+const CustomInput = props => {
+	const {
+		value,
+		onChange,
+		isEditable,
+	} = props;
+
+	return (
+		<ControlContainer>
+			{ ( isEditable ) && (
+				<EditControl
+					value={ value || '' }
+					onChange={ onChange }
+				/>
+			) }
+			{ value && (
+				<PreviewControl
+					value={ value }
+				/>
+			) }
+		</ControlContainer>
+	);
+};
+
+// Filter the test options to use a custom input, custom default value, and custom revert value callback.
+wp.hooks.addFilter( 'altis.experiments.sidebar.test.cta_button_style', 'altis.experiments.features.cta_button_style', options => ( {
+	...options,
+	component: CustomInput,
+
+	/**
+	 * Add/replace dispatchers available to the experiment panel.
+	 *
+	 * @param {Function} dispatch Dispatch function.
+	 * @returns {object} Object with dispatcher callbacks.
+	 */
+	dispatcher: dispatch => ( {
+		/**
+		 * Callback to revert to the default value.
+		 *
+		 * @param {*} value Value to revert to.
+		 */
+		revertValue: value => dispatch( 'core/editor' ).editPost( { cta_button_style: value } ),
+	} ),
+
+	/**
+	 * Add/replace selectors available to the experiment panel.
+	 *
+	 * @param {Function} select Select function.
+	 * @returns {object} Object with selector callbacks.
+	 */
+	selector: select => ( {
+		defaultValue: select( 'core/editor' ).getEditedPostAttribute( 'should_bring_money' ) ? 'big_fat_cta' : 'poor_little_cta',
+	} ),
+} ) );
 ```
 
 ### Goal Tracking

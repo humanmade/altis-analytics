@@ -2,7 +2,7 @@
 
 Altis [Experience Blocks](https://www.altis-dxp.com/experience-blocks/) (XBs) are built-in blocks for the editor that provide advanced capabilities. We are continually extending the range and uses of these blocks.
 
-The blocks themselves are backed by analytics data and [audiences](./audiences.md) making it possible to record interactions and impressions with specific pieces of content on your pages. This document outlines the underlying mechanism so that you can implement these blocks outside of the scope of the block editor.
+The blocks themselves are backed by analytics data and [audiences](../native/audiences.md) making it possible to record interactions and impressions with specific pieces of content on your pages. This document outlines the underlying mechanism so that you can implement these blocks outside of the scope of the block editor.
 
 ## Personalization API
 

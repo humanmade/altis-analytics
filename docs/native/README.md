@@ -24,13 +24,13 @@ Altis Analytics can power features such as popular posts widgets, personalisatio
 
 ## Data Structure and APIs
 
-The highly flexible analytics data set is the engine behind [audiences](./audiences.md), and [Altis Optimization Framework](./optimization-framework/).
+The highly flexible analytics data set is the engine behind [audiences](./audiences.md), and [Altis Optimization Framework](../optimization-framework/).
 
 [Learn about available APIs and the data structure in detail here](./api/).
 
 ## Optimization Framework
 
-[Altis Optimization Framework](./optimization-framework/) is a flexible and extensive framework that enables Content Optimization through [Personalization](./optimization-framework/personalization/) features like [Experience Blocks](./optimization-framework/personalization/experience-blocks.md), and [Experimentation](./optimization-framework/experiments/) features like [A/B tests](./optimization-framework/experiments/ab-testing.md).
+[Altis Optimization Framework](../optimization-framework/) is a flexible and extensive framework that enables Content Optimization through [Personalization](../optimization-framework/personalization/) features like [Experience Blocks](../optimization-framework/personalization/experience-blocks.md), and [Experimentation](../optimization-framework/experiments/) features like [A/B tests](../optimization-framework/experiments/ab-testing.md).
 
 ## Audiences
 

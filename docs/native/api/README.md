@@ -2,7 +2,7 @@
 
 The highly flexible analytics data set is the engine behind [audiences](../audiences.md), and [Altis Optimization Framework](../../optimization-framework/).
 
-[Learn how the data structured in detail here](./data-structure.md).
+[Learn how the data is structured in detail here](./data-structure.md).
 
 ## Client Side API
 
