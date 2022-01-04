@@ -240,6 +240,10 @@ Note you should use the following functions to get and update the variants. All 
 
 ### Actions
 
+**`altis.experiments.test.registered: (string) $test_id, (array) $options`**
+
+Fired when a test has been registered using `register_post_ab_test`.
+
 **`altis.experiments.test.ended: (string) $test_id, (int) $post_id`**
 
 Fired when a test has ended either by finding a statistically significant difference or the end date was reached.
