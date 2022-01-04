@@ -160,7 +160,7 @@ To register a custom editor input, and override some of the test options.
 ```js
 // feature.js
 
-import { EditControl, PreviewControl, ControlContainer } from 'some/custom/library';
+import { EditControl, PreviewControl } from 'some/custom/library';
 
 /**
  * Custom input component
@@ -176,7 +176,7 @@ const CustomInput = props => {
 	} = props;
 
 	return (
-		<ControlContainer>
+		<div>
 			{ ( isEditable ) && (
 				<EditControl
 					value={ value || '' }
@@ -188,7 +188,7 @@ const CustomInput = props => {
 					value={ value }
 				/>
 			) }
-		</ControlContainer>
+		</div>
 	);
 };
 
