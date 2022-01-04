@@ -4,9 +4,9 @@ Altis [Experience Blocks](https://www.altis-dxp.com/experience-blocks/) (XBs) ar
 
 The blocks themselves are backed by analytics data and [audiences](./audiences.md) making it possible to record interactions and impressions with specific pieces of content on your pages. This document outlines the underlying mechanism so that you can implement these blocks outside of the scope of the block editor.
 
-## Personalization
+## Personalization API
 
-Altis empowers editorial teams to create personalized content with the Personalized Content Experience Block. Because it's crucial that web pages can be fully cached for performance, our Personalized Content blocks use [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) that are simple to use and load immediately as the document is loaded.
+Altis empowers editorial teams to create personalized content with the Personalized Content Experience Block. And because it's crucial that web pages can be fully cached for performance, our Personalized Content blocks use [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) that are simple to use and load immediately as the document is loaded.
 
 The web component `<personalization-block>` can be used anywhere on your pages to show content conditionally according to the audience segments the current website visitor matches.
 

@@ -11,11 +11,11 @@ Altis provides its own analytics layer as part of the infrastructure by default.
 [Read more about native Altis Analytics](./native/README.md)
 
 
-### Web Experiments
+### Optimization Framework
 
-Built on top of the native analytics feature the web experimentation framework provides editorial teams with features such as A/B testing to test the effectiveness of their content and developers with an extensible API for creating custom tests.
+Built on top of the native analytics feature the Altis optimization framework provides editorial teams with features such as A/B testing to test the effectiveness of their content and developers with an extensible API for creating custom tests, and tools to personalize content to provide better and more effective user experience.
 
-[Read more about web experiments in Altis](./native/experiments.md)
+[Read more about optimization framework in Altis](./optimization-framework/)
 
 ## Google Tag Manager
 

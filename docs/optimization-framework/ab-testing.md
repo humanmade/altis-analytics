@@ -1,17 +1,12 @@
-# Experiments
+# A/B Tests
 
-Backed by [native Altis Analytics](./native.md), Experiments are a powerful tool for optimizing content and measuring the effectiveness of changes to the site.
+[A/B Tests](./ab-tests.md) provides the tools to carry out randomized experiments using different variations of content features, eg: titles and featured images, and/or different variations of content blocks.
 
-The feature is enabled by default and provides a developer API for creating custom experiments as well as some built in features.
+Tests run until the end date or when a statistically significant improvement has been found, when a winner is found the winning variant will be shown to everyone.
 
-## Features
+Altis provides an A/B Test Block, which you can use to test different variations of a block / set of blocks. And also a developer friendly framework to test different content features like Title and Featured Images, which can be controlled from the Block Editor sidebar.
 
-- Tests run until the end date or when a statistically significant improvement has been found
-- When a winner is found the winning variant will be shown to everyone
-
-The following built in experiments are provided:
-
-### Post Title A/B Tests
+## Post Title A/B Tests
 
 With this feature enabled it's simple to create A/B Tests for your post titles directly from the post edit screen.
 
