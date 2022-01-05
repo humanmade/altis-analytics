@@ -13,9 +13,9 @@ Altis provides its own analytics layer as part of the infrastructure by default.
 
 ### Optimization Framework
 
-Built on top of the native analytics feature the Altis optimization framework provides editorial teams with features such as A/B testing to test the effectiveness of their content and developers with an extensible API for creating custom tests, and tools to personalize content to provide better and more effective user experience.
+Built on top of the native analytics feature the Altis optimization framework provides editorial teams with features such as A/B testing and tools to personalize content to provide a better and more effective user experience. In addition it gives developers an extensible API for creating custom tests, conversion goals and more.
 
-[Read more about optimization framework in Altis](./optimization-framework/)
+[Read more about the Optimization Framework in Altis](./optimization-framework/)
 
 ## Google Tag Manager
 

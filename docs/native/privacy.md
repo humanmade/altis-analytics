@@ -48,4 +48,4 @@ The `data-retention-days` property accepts an integer between 1 and 90. Data old
 
 ## Collecting Long Term Data
 
-For an example of collecting and storing over longer periods of time see the [cumulative statistics example](./apo/examples.md#cumulative-statistics).
+For an example of collecting and storing over longer periods of time see the [cumulative statistics example](./api/examples.md#cumulative-statistics).
