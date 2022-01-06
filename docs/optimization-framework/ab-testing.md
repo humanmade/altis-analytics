@@ -62,6 +62,7 @@ Sets up the test.
 - `$test_id`: A unique ID for the test.
 - `$options`: Configuration options for the test.
   - `label <string>`: A human readable label for the test.
+  - `singular_label <string>`: A human readable label for a single variant of the test.
   - `rest_api_variants_field <string>`: The field name to make variants available at.
   - `rest_api_variants_type <string>`:  The data type of the variants.
   - `goal <string>`: The conversion goal event name, eg "click" or "click:.selector a".
