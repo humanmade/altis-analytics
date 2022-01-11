@@ -3,6 +3,7 @@
 Step 1: Register the test, and the custom meta field that will control the value we'll be testing.
 
 ```php
+<?php
 // functions.php
 
 // Register the test.
@@ -14,11 +15,11 @@ add_action( 'init', function() {
 		'goal' => 'click',
 		'variant_callback' => function ( $variant_value, $post_id ) {
 			$label = __( 'Register now', 'my-theme' );
-			return `
-				<button class="cta-button cta-button-$variant_value">
-					$label
-				</button>
-			`;
+			return sprintf(
+				'<button class="cta-button cta-button-%s">%s</button>',
+				$variant_value,
+				$label
+			);
 		},
 		'post_types' => [ 'event' ],
 		'editor_scripts' => [
@@ -114,12 +115,25 @@ wp.hooks.addFilter( 'altis.experiments.sidebar.test.cta_button_style', 'altis.ex
 Step 3: Output the test output in your template.
 
 ```php
-// single-event.php
+<?php
+// template-parts/cta.php
 
-// ..
-<div class='cta-container'>
-	<?php output_ab_test_html_for_post( 'cta_button_style', get_the_ID() ); ?>
+use Altis\Analytics\Experiments;
+ 
+$default = sprintf(
+	'<button class="cta-button cta-button-medium">%s</button>',
+	__( 'Register Now', 'my-theme' )
+);
+
+?>
+<div class="cta-container">
+	<?php
+		echo Experiments\output_ab_test_html_for_post(
+			'cta_button_style',
+			get_the_ID(),
+			$default
+		);
+	?>
 </div>
-// ..
 ```
 
