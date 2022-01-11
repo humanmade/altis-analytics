@@ -15,7 +15,7 @@ add_filter( 'altis.consent.allowlisted_categories', function () {
 } );
 ```
 
-Without the `statistics` category of consent, the `endpoint.User` data will be stripped from the data sent to Altis Analytics. To help protect your user's privacy, any personally identifiable information should only ever be stored under the `endpoint.User.UserAttributes` property. You can read more about this in the section on [Data Structure](./data-structure.md).
+Without the `statistics` category of consent, the `endpoint.User` data will be stripped from the data sent to Altis Analytics. To help protect your user's privacy, any personally identifiable information should only ever be stored under the `endpoint.User.UserAttributes` property. You can read more about this in the section on [Data Structure](./api/data-structure.md).
 
 ## Data Retention
 
@@ -48,4 +48,4 @@ The `data-retention-days` property accepts an integer between 1 and 90. Data old
 
 ## Collecting Long Term Data
 
-For an example of collecting and storing over longer periods of time see the [cumulative statistics example](./examples.md#cumulative-statistics).
+For an example of collecting and storing over longer periods of time see the [cumulative statistics example](./api/examples.md#cumulative-statistics).

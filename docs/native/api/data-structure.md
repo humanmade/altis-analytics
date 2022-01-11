@@ -31,7 +31,7 @@ In order to protect your users privacy it is vital to follow these guidelines to
 
 The `endpoint.User.UserId` value is automatically populated for logged in users, however, if users have not consented to the `statistics` category of cookies the user ID and user attributes are not recorded. Only `statistics-anonymous` consent is opted into by default.
 
-You can [learn more about privacy with Altis Native Analytics here](./privacy.md ).
+You can [learn more about privacy with Altis Native Analytics here](../privacy.md ).
 
 ## Anatomy of an Event Record
 

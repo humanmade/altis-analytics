@@ -122,7 +122,7 @@ The objects in the buckets array above have a `key` and a `doc_count` property w
 
 ## Cumulative Statistics
 
-Because data is deleted after the configured number of days outlined in the [privacy document](./privacy.md) it is necessary to gather aggregated data over time using scheduled tasks. This is the method used for [tracking A/B test results](../experiments.md).
+Because data is deleted after the configured number of days outlined in the [privacy document](../privacy.md) it is necessary to gather aggregated data over time using scheduled tasks. This is the method used for [tracking A/B test results](../../optimization-framework/ab-testing.md).
 
 The following example records the number of page views for a given post over time.
 
