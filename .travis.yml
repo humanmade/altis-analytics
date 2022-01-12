@@ -52,7 +52,7 @@ branches:
 
 before_script:
   # Exit early if no tests are found
-  - test -n "$(find vendor/$ALTIS_PACKAGE/tests -name '*.suite.yml')" || exit 0
+  - test -n "$(find vendor/$ALTIS_PACKAGE/tests -name '*.suite.yml' 2>/dev/null)" || exit 0
   # Install Altis and start the local server
   - composer create-project altis/skeleton:dev-$TRAVIS_BRANCH --stability=dev $HOME/test-root
   # Require the current module and alias the branch to be tested to the target version main branch
@@ -62,4 +62,4 @@ script:
   # Start local server
   - cd $HOME/test-root && composer serve
   # Run Codeception for module tests, if test suites are found.
-  - cd $HOME/test-root && test -n "$(find vendor/$ALTIS_PACKAGE/tests -name '*.suite.yml')" && composer dev-tools codecept run -p vendor/$ALTIS_PACKAGE/tests
+  - cd $HOME/test-root && composer dev-tools codecept run -p vendor/$ALTIS_PACKAGE/tests
