@@ -10,4 +10,5 @@ modules:
     enabled:
         - WPDb
         - WPWebDriver
+        - Asserts
         - \Helper\Acceptance
