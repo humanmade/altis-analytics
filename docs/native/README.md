@@ -22,32 +22,20 @@ The data is queried from Elasticsearch in the application providing a powerful q
 
 Altis Analytics can power features such as popular posts widgets, personalisation and A/B tests.
 
-## Data Structure
+## Data Structure and APIs
 
-The highly flexible analytics data set is the engine behind features such as [Experience Blocks](https://www.altis-dxp.com/experience-blocks/), [audiences](./audiences.md) and [A/B testing](./experiments.md).
+The highly flexible analytics data set is the engine behind [audiences](./audiences.md), and the [Altis Optimization Framework](../optimization-framework/).
 
-[Learn how the data is structured in detail here](./data-structure.md).
+[Learn about the available APIs and the data structure in detail here](./api/).
 
-## Client Side API
+## Optimization Framework
 
-[Learn how to use and extend analytics data and audiences in JavaScript here](./client-side-api.md).
-
-## Server Side API
-
-[Learn how to use and extend analytics data and audiences in PHP here](./server-side-api.md).
+[Altis Optimization Framework](../optimization-framework/) is a flexible and extensive framework that enables Content Optimization through [Personalization](../optimization-framework/personalization/) features like [Experience Blocks](../optimization-framework/personalization/experience-blocks.md), and [Experimentation](../optimization-framework/experiments/) features like [A/B tests](../optimization-framework/experiments/ab-testing.md).
 
 ## Audiences
 
 [Audiences are a powerful tool](./audiences.md) for driving personalisation and gaining insights through testing and reporting.
 
-## Experience Blocks
-
-[Experience Blocks](./experience-blocks.md) not only provide built in editor blocks but also expose the low-level API and HTML markup that powers them.
-
 ## Privacy
 
 [Discover how Altis helps to respect your visitor's privacy](./privacy.md) by helping you control how long to keep data for and learning how to process analytics data for long term storage.
-
-## Examples
-
-[Check out the examples](./examples.md) to see some real-world uses of the data.
