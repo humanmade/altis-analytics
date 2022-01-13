@@ -35,9 +35,11 @@ class AudiencesCest {
 		] );
 
 		// Run the background task manually.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
 		exec( 'WPBROWSER_HOST_REQUEST=1 wp cron event run altis_analytics_import_demo_data' );
 
 		// Check contents of ES has at least 9000 rows from data import.
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_exec
 		exec( 'curl -XPOST http://elasticsearch:9200/analytics-*/_search?size=0', $output, $return );
 		$I->assertEquals( 0, $return );
 		$data = json_decode( $output[0] ?? '', true );
