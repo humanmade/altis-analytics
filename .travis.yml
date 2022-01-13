@@ -57,6 +57,7 @@ before_script:
   - composer create-project altis/skeleton:dev-$TRAVIS_BRANCH --stability=dev $HOME/test-root || exit 1
   # Require the current module and alias the branch to be tested to the target version main branch
   - cd $HOME/test-root && composer require "$ALTIS_PACKAGE:dev-$TRAVIS_PULL_REQUEST_BRANCH as dev-$TRAVIS_BRANCH"
+  - cd $HOME/test-root && composer require altis/analytics-demo-tools
 
 script:
   # Start local server
