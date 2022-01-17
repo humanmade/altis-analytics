@@ -17,7 +17,11 @@ use HM\Workflows\Workflow;
  * Setup integration.
  */
 function bootstrap() {
+
 	$config = get_config()['modules']['analytics']['native'];
+
+	// Determine whether to display the dashboard replacement.
+	define( 'ALTIS_ACCELERATE_DASHBOARD', (bool) $config['dashboard'] );
 
 	// Check if Elasticsearch is available before loading.
 	if ( ! defined( 'ELASTICSEARCH_HOST' ) ) {
@@ -44,6 +48,7 @@ function bootstrap() {
 	add_filter( 'altis.analytics.max_index_age', __NAMESPACE__ . '\\set_data_retention_days' );
 
 	// Load Experiments.
+	$config['experiments'] = $config['experiments'] ?? true;
 	if ( $config['experiments'] ) {
 		// Enable/Disable Experiments Features.
 		if ( is_array( $config['experiments'] ) ) {
