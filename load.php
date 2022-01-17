@@ -13,6 +13,7 @@ add_action( 'altis.modules.init', function () {
 	$default_settings = [
 		'enabled' => true,
 		'native' => [
+			'dashboard' => true,
 			'experiments' => [
 				'titles' => true,
 			],

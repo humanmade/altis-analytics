@@ -1,5 +1,7 @@
 # Native Analytics
 
+Altis Analytics is only available to Accelerate and Enterprise tier customers.
+
 Altis Analytics provides a built in tool for tracking and analyzing user behavior across the site in real time. It is enabled by default but can be switched off via the configuration file:
 
 ```json
@@ -21,6 +23,28 @@ Analytics data is stored in an S3 data lake and delivered to Elasticsearch where
 The data is queried from Elasticsearch in the application providing a powerful query language with filtering and aggregations for collecting statistics and other metrics.
 
 Altis Analytics can power features such as popular posts widgets, personalisation and A/B tests.
+
+## Dashboards
+
+By default Altis Analytics replaces the default WordPress dashboard with an overview of your best performing content.
+
+If needed you can switch this off via the `dashboard` config option like so:
+
+```json
+{
+	"extra": {
+		"altis": {
+			"modules": {
+				"analytics": {
+					"dashboard": false
+				}
+			}
+		}
+	}
+}
+```
+
+Altis also provides a more detailed analytics view and insights page under the main Dashboard menu item in the admin.
 
 ## Data Structure and APIs
 
