@@ -17,10 +17,6 @@ use HM\Workflows\Workflow;
  * Setup integration.
  */
 function bootstrap() {
-	// Only load native analytics solution for Accelerate or higher.
-	if ( Altis\get_feature_tier() === 'plus' ) {
-		return;
-	}
 
 	$config = get_config()['modules']['analytics']['native'];
 
