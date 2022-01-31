@@ -48,13 +48,13 @@ Altis also provides a more detailed analytics view and insights page under the m
 
 ## Data Structure and APIs
 
-The highly flexible analytics data set is the engine behind [audiences](./audiences.md), and the [Altis Optimization Framework](../optimization-framework/).
+The highly flexible analytics data set is the engine behind [audiences](./audiences.md), and the [Altis Optimization Framework](../optimization-framework/README.md).
 
-[Learn about the available APIs and the data structure in detail here](./api/).
+[Learn about the available APIs and the data structure in detail here](./api/README.md).
 
 ## Optimization Framework
 
-[Altis Optimization Framework](../optimization-framework/) is a flexible and extensive framework that enables Content Optimization through [Personalization](../optimization-framework/personalization/) features like [Experience Blocks](../optimization-framework/personalization/experience-blocks.md), and [Experimentation](../optimization-framework/experiments/) features like [A/B tests](../optimization-framework/experiments/ab-testing.md).
+[Altis Optimization Framework](../optimization-framework/) is a flexible and extensive framework that enables Content Optimization through [Personalization](../optimization-framework/personalization.md) and [A/B tests](../optimization-framework/ab-testing.md), the features that power [Altis Experience Blocks](../experience-blocks.md).
 
 ## Audiences
 
