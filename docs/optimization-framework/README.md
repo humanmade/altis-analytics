@@ -2,6 +2,8 @@
 
 Altis Optimization Framework is the set of APIs that builds on top of Altis Native Analytics, to provide the tooling needed to enable Personalization and Experimentation features.
 
+[Altis Experience Blocks](../experience-blocks.md) are built on this framework.
+
 ## Experimentation
 
 Experiments are a powerful tool for optimizing content and measuring the effectiveness of changes to the site.
@@ -20,4 +22,4 @@ The framework is enabled by default, and provides a built-in _Personalized Conte
 
 The framework also provides a developer API to that facilitates the use of personalization features outside of the context of the Block Editor as well.
 
-[Learn more about Experience Blocks and Personalization APIs in Altis](./experience-blocks.md).
+[Learn more about Personalization APIs in Altis](./personalization.md).
