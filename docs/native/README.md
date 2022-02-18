@@ -50,7 +50,7 @@ Altis also provides a more detailed analytics view and insights page under the m
 
 The highly flexible analytics data set is the engine behind [audiences](./audiences.md), and the [Altis Optimization Framework](../optimization-framework/README.md).
 
-[Learn about the available APIs and the data structure in detail here](./api/README.md), also [learn about the automated scheduled analytics data export to external services here](./api/data-export-schedule.md).
+[Learn about the available APIs and the data structure in detail here](./api/README.md), and [learn about the different ways you can integrate analytics data with external services here](./api/data-export.md).
 
 ## Optimization Framework
 
