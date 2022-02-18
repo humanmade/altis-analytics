@@ -1,0 +1,80 @@
+# Data Export Schedule
+
+Altis can periodically poll raw analytics data and make them available for integrations with external Business Intellegence (BI) tools. The polling happens every 10 minutes and handles maximum of 100 files on a single run, the process continues from where it left off on the previous run.
+
+The process happens in the background as a scheduled job, which means there is no performance impact on end users.
+
+This feature only works if an integration is actively subscribing to such process, to avoid unnecessary processing of data.
+
+## API
+
+**`altis.analytics.export.cron.enabled`**
+
+Toggle the feature on/off. Worth noting that the feature will be inactive unless a service uses the `altis.analytics.export.data.process` filter.
+
+Example:
+
+```php
+add_filter( 'altis.analytics.export.cron.enabled', '__return_false' );
+```
+
+**`altis.analytics.export.cron.frequency`**
+
+Control the interval of the scheduled job, expects a WordPress cron schedule name. See [`cron_schedules`](https://developer.wordpress.org/reference/hooks/cron_schedules/) filter for more information. Defaults to 10 minutes.
+
+Example:
+
+```php
+add_filter( 'altis.analytics.export.cron.frequency', function() : string {
+    return 'hourly';
+} );
+```
+
+**`altis.analytics.export.log`**
+
+Use this action to trigger exporting the raw analytics data to your external BI service.
+
+Arguments:
+
+- `message`: Text content of the log message.
+- `level`: Level of the error message, following PHP error levels.
+
+Example:
+
+```php
+add_action( 'altis.analytics.export.log', 'Acme\log_analytics_data' );
+
+function log_analytics_messages( string $message, int $level ) : void {
+    // Email the log message, or post to Slack.
+}
+```
+
+**`altis.analytics.export.data.process`**
+
+Trigger exporting the raw analytics data to your external BI service.
+
+Arguments:
+
+- `data`: NDJSON formatted string containing a batch of events separated by new lines.
+
+Example:
+
+```php
+add_action( 'altis.analytics.export.data.process', 'Acme\process_analytics_data' );
+
+function process_analytics_data( string $data ) : void {
+    // push the data to external BI tool
+}
+```
+
+**`altis.analytics.export.max.files`**
+
+Use this action to trigger exporting the raw analytics data to your external BI service.
+
+Example:
+
+```php
+add_filter( 'altis.analytics.export.max.files', function() : string {
+    return 200;
+} );
+```
