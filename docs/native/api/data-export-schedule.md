@@ -1,16 +1,16 @@
 # Data Export Schedule
 
-Altis can periodically poll raw analytics data and make them available for integrations with external Business Intellegence (BI) tools. The polling happens every 10 minutes and handles maximum of 100 files on a single run, the process continues from where it left off on the previous run.
+Altis can periodically poll raw analytics data and make them available for integrations with external Business Intelligence (BI) tools. The polling happens every 10 minutes and handles a maximum of 100 files per run. The process continues from where it left off on the previous run.
 
 The process happens in the background as a scheduled job, which means there is no performance impact on end users.
 
-This feature only works if an integration is actively subscribing to such process, to avoid unnecessary processing of data.
+This export only runs if an integration is actively subscribing to it, to avoid unnecessary processing of data.
 
 ## API
 
 **`altis.analytics.export.cron.enabled`**
 
-Toggle the feature on/off. Worth noting that the feature will be inactive unless a service uses the `altis.analytics.export.data.process` filter.
+Toggle the feature on/off. Worth noting that the feature will be inactive unless a service uses the `altis.analytics.export.data.process` action hook.
 
 Example:
 
@@ -32,7 +32,7 @@ add_filter( 'altis.analytics.export.cron.frequency', function() : string {
 
 **`altis.analytics.export.log`**
 
-Use this action to trigger exporting the raw analytics data to your external BI service.
+Use this action to send logs from processing the data via email or any notifications service.
 
 Arguments:
 
@@ -42,10 +42,10 @@ Arguments:
 Example:
 
 ```php
-add_action( 'altis.analytics.export.log', 'Acme\log_analytics_data' );
+add_action( 'altis.analytics.export.log', 'Acme\log_analytics_messages' );
 
 function log_analytics_messages( string $message, int $level ) : void {
-    // Email the log message, or post to Slack.
+    // Email the log message, or post to Slack for example.
 }
 ```
 
@@ -60,6 +60,8 @@ Arguments:
 Example:
 
 ```php
+namespace Acme;
+
 add_action( 'altis.analytics.export.data.process', 'Acme\process_analytics_data' );
 
 function process_analytics_data( string $data ) : void {
@@ -70,6 +72,8 @@ function process_analytics_data( string $data ) : void {
 **`altis.analytics.export.max.files`**
 
 Use this action to trigger exporting the raw analytics data to your external BI service.
+
+This might be useful if you are generating a lot of data, resulting in a lag, and need to process it more quickly.
 
 Example:
 
