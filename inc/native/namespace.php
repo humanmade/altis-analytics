@@ -6,6 +6,8 @@
 namespace Altis\Analytics\Native;
 
 use Altis;
+use Altis\Module;
+
 use function Altis\Experiments\get_ab_test_variants_for_post;
 use function Altis\Experiments\get_post_ab_test;
 use function Altis\get_config;
@@ -20,8 +22,14 @@ function bootstrap() {
 
 	$config = get_config()['modules']['analytics']['native'];
 
+	// Use defaults if `$config` is just set to `true`.
+	if ( ! is_array( $config ) ) {
+		$module = Module::get( 'analytics' );
+		$config = $module->get_settings();
+	}
+
 	// Determine whether to display the dashboard replacement.
-	define( 'ALTIS_ACCELERATE_DASHBOARD', (bool) $config['dashboard'] );
+	define( 'ALTIS_ACCELERATE_DASHBOARD', (bool) ( $config['dashboard'] ?? true ) );
 
 	// Check if Elasticsearch is available before loading.
 	if ( ! defined( 'ELASTICSEARCH_HOST' ) ) {
