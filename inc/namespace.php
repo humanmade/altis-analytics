@@ -25,6 +25,17 @@ function bootstrap( Module $module ) {
 	if ( $settings['native'] ) {
 		add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_native_analytics', 0 );
 	}
+
+	// Check if the Segment integration is enabled, and whether a key has been added to config.
+	if (
+		! empty( $settings['integrations']['segment'] )
+		&& ( $settings['integrations']['segment']['enabled'] ?? true ) === false
+	) {
+		// Define the constant of the API key from config, which activates the integration.
+		if ( ! empty( $settings['integrations']['segment']['api_key'] ) && ! defined( 'SEGMENT_API_WRITE_KEY' ) ) {
+			define( 'SEGMENT_API_WRITE_KEY', $settings['integrations']['segment']['api_key'] );
+		}
+	}
 }
 
 /**
