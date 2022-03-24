@@ -32,8 +32,8 @@ function bootstrap( Module $module ) {
 		&& ( $settings['integrations']['segment']['enabled'] ?? true ) === false
 	) {
 		// Define the constant of the API key from config, which activates the integration.
-		if ( ! empty( $settings['integrations']['segment']['api_key'] ) && ! defined( 'SEGMENT_API_WRITE_KEY' ) ) {
-			define( 'SEGMENT_API_WRITE_KEY', $settings['integrations']['segment']['api_key'] );
+		if ( ! empty( $settings['integrations']['segment']['api-key'] ) && ! defined( 'SEGMENT_API_WRITE_KEY' ) ) {
+			define( 'SEGMENT_API_WRITE_KEY', $settings['integrations']['segment']['api-key'] );
 		}
 	}
 }

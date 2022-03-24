@@ -27,7 +27,7 @@ add_action( 'altis.modules.init', function () {
 		'integrations' => [
 			'segment' => [
 				'enabled' => true,
-				'api_key' => '',
+				'api-key' => '',
 			],
 		],
 	];
