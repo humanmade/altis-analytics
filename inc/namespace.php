@@ -34,6 +34,7 @@ function bootstrap( Module $module ) {
 		// Define the constant of the API key from config, which activates the integration.
 		if ( ! empty( $settings['integrations']['segment']['api-key'] ) && ! defined( 'SEGMENT_API_WRITE_KEY' ) ) {
 			define( 'SEGMENT_API_WRITE_KEY', $settings['integrations']['segment']['api-key'] );
+			add_action( 'muplugins_loaded', __NAMESPACE__ . '\\load_segment_integration', 0 );
 		}
 	}
 }
@@ -54,4 +55,13 @@ function load_google_tag_manager() {
 function load_native_analytics() {
 	require_once ROOT_DIR . '/vendor/altis/aws-analytics/plugin.php';
 	Native\bootstrap();
+}
+
+/**
+ * Load Segment integration plugin.
+ *
+ * @return void
+ */
+function load_segment_integration() {
+	require_once ROOT_DIR . '/vendor/altis/analytics-integration-segment/plugin.php';
 }
