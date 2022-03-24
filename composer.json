@@ -26,6 +26,7 @@
         "altis": {
             "install-overrides": [
                 "altis/aws-analytics",
+                "altis/analytics-integration-segment",
                 "humanmade/hm-gtm"
             ]
         }
