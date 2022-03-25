@@ -24,6 +24,12 @@ add_action( 'altis.modules.init', function () {
 			'sites' => [],
 			'event-tracking' => false,
 		],
+		'integrations' => [
+			'segment' => [
+				'enabled' => true,
+				'api-key' => '',
+			],
+		],
 	];
 	$options = [
 		'defaults' => $default_settings,

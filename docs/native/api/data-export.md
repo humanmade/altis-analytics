@@ -31,7 +31,7 @@ curl -o <YYYY-MM-DD>.csv \
 
 ## Data Export Schedule
 
-Altis can periodically poll raw analytics data and make them available for integrations with external Business Intelligence (BI) tools. The polling happens every 10 minutes and handles a maximum of 100 files per run. The process continues from where it left off on the previous run.
+Altis can periodically poll raw analytics data and make them available for integrations with external Business Intelligence (BI) tools. The polling happens every 10 minutes (by default) and handles a maximum of 100 files per run. The process continues from where it left off on the previous run.
 
 The process happens in the background as a scheduled job, which means there is no performance impact on end users.
 
