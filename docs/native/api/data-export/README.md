@@ -2,6 +2,10 @@
 
 In order to export your analytics data for use in other Business Intelligence tools you can do so using two different methods: pulling data via the analytics events API endpoint, or pushing the data to external services using scheduled jobs.
 
+Integrations for the following services are provided out of the box:
+
+- [Segment.com](./segment.md)
+
 ## Events API Endpoint
 
 This approach requires requests to be authenticated. The simplest and most secure way to do this is using an application password. You can create one from your [profile page in the admin](admin://profile.php).
