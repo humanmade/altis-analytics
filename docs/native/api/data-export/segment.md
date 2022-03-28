@@ -1,6 +1,6 @@
-# Segment Integration for Altis Analytics
+# Segment.com Integration
 
-Altis includes native integration for Segment.com, which when activated pushes analytics data to Segment for further tracking and analysis.
+Altis Analytics includes native integration for Segment.com, which when activated pushes analytics data to Segment for further tracking and analysis.
 
 To activate the integration, an API key needs to be obtained from Segment's dashboard. Navigate to _Sources > {Your source for the current site} > Settings > API Keys_, and grab the _Write Key_ value. Add it to your Altis configuration in `composer.json` like so:
 
@@ -23,7 +23,7 @@ To activate the integration, an API key needs to be obtained from Segment's dash
 }
 ```
 
-You should now start to see Altis Analytics data in your Segment dashboard. Events will be synced every 10 minutes by default (refer to [Data Export](./data-export.md) for how to change the default schedule).
+You should now start to see Altis Analytics data in your Segment dashboard. Events will be synced every 10 minutes by default (refer to [the Data Export Schedule documentation](./README.md#data-export-schedule) for how to change the default schedule).
 
 ## API
 
