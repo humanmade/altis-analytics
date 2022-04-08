@@ -6,10 +6,8 @@
 namespace Altis\Analytics\Native;
 
 use Altis;
-use function Altis\Experiments\get_ab_test_variants_for_post;
-use function Altis\Experiments\get_post_ab_test;
-use function Altis\get_config;
-use function HM\Workflows\get_post_assignees;
+use Altis\Analytics\Experiments;
+use HM\Workflows;
 use HM\Workflows\Event;
 use HM\Workflows\Workflow;
 
@@ -17,7 +15,8 @@ use HM\Workflows\Workflow;
  * Setup integration.
  */
 function bootstrap() {
-	$config = get_config()['modules']['analytics']['native'];
+
+	$config = Altis\get_config()['modules']['analytics']['native'];
 
 	// Check if Elasticsearch is available before loading.
 	if ( ! defined( 'ELASTICSEARCH_HOST' ) ) {
@@ -56,7 +55,7 @@ function bootstrap() {
 		}
 
 		// Experiments notifications.
-		if ( get_config()['modules']['workflow']['enabled'] ) {
+		if ( Altis\get_config()['modules']['workflow']['enabled'] ) {
 			add_action( 'plugins_loaded', __NAMESPACE__ . '\\setup_notifications', 12 );
 		}
 	}
@@ -76,8 +75,8 @@ function bootstrap() {
  * @return int
  */
 function set_data_retention_days( int $days ) : int {
-	if ( get_config()['modules']['analytics']['native']['data-retention-days'] ?? false ) {
-		return get_config()['modules']['analytics']['native']['data-retention-days'];
+	if ( Altis\get_config()['modules']['analytics']['native']['data-retention-days'] ?? false ) {
+		return Altis\get_config()['modules']['analytics']['native']['data-retention-days'];
 	}
 	return $days;
 }
@@ -114,17 +113,17 @@ function setup_notifications() {
 		}, __( 'Post author', 'altis-analytics' ) );
 
 		$event->add_recipient_handler( 'post_assignees', function ( string $test_id, int $post_id ) {
-			return get_post_assignees( $post_id );
+			return Workflows\get_post_assignees( $post_id );
 		}, __( 'Post assignees', 'altis-analytics' ) );
 
 		$event->add_message_tags( [
 			'test.title' => function ( string $test_id ) {
-				$test = get_post_ab_test( $test_id );
+				$test = Experiments\get_post_ab_test( $test_id );
 				return $test['label'];
 			},
 			'post.title' => function ( string $test_id, int $post_id ) {
 				$post = get_post( $post_id );
-				$variants = get_ab_test_variants_for_post( $test_id, $post_id );
+				$variants = Experiments\get_ab_test_variants_for_post( $test_id, $post_id );
 				return count( $variants ) ? $variants[0] : $post->post_title;
 			},
 		] );
