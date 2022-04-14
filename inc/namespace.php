@@ -29,7 +29,7 @@ function bootstrap( Module $module ) {
 	// Check if the Segment integration is enabled, and whether a key has been added to config.
 	if (
 		! empty( $settings['integrations']['segment'] )
-		&& ( $settings['integrations']['segment']['enabled'] ?? true ) === false
+		&& ( $settings['integrations']['segment']['enabled'] ?? true ) !== false
 	) {
 		// Define the constant of the API key from config, which activates the integration.
 		if ( ! empty( $settings['integrations']['segment']['api-key'] ) && ! defined( 'SEGMENT_API_WRITE_KEY' ) ) {
