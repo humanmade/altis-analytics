@@ -52,7 +52,7 @@ The highly flexible analytics data set is the engine behind [audiences](./audien
 
 [Learn about the available APIs and the data structure in detail here](./api/README.md), and [learn about the different ways you can integrate analytics data with external services here](./api/data-export.md).
 
-Altis also includes native integration for Segment.com, which when activated pushes analytics data to Segment for further tracking and analysis. [Learn about the Segment integration for Altis Analytics here](./api/integrations/segment.md).
+Altis also includes native integration for Segment.com, which when activated pushes analytics data to Segment for further tracking and analysis. [Learn about the Segment integration for Altis Analytics here](./api/data-export/segment.md).
 
 ## Optimization Framework
 
