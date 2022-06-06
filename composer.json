@@ -4,7 +4,7 @@
     "type": "package",
     "require": {
         "php": ">=7.1",
-        "humanmade/hm-gtm": "~2.0.7",
+        "humanmade/hm-gtm": "~2.0.8",
         "altis/aws-analytics": "~4.6.6",
         "altis/analytics-integration-segment": "~0.2.0"
     },
