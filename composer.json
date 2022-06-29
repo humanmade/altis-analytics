@@ -4,7 +4,7 @@
     "type": "package",
     "require": {
         "php": ">=7.1",
-        "humanmade/hm-gtm": "~2.1.0",
+        "humanmade/hm-gtm": "^2.1.0",
         "altis/aws-analytics": "~4.5.15"
     },
     "license": "GPL-2.0",
