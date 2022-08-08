@@ -1,6 +1,6 @@
 # Google Tag Manager
 
-Configure the container IDs at a network and per site level by following the below example in your project's `composer.json` file.
+Configure the container IDs at a network and per site level by following the example below in your project's `composer.json` file.
 
 ```json
 {
