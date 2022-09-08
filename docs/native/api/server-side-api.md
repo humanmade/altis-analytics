@@ -116,3 +116,7 @@ Insights and aggregated analytics data can be calculated, updated and stored in 
 **`altis.analytics.audiences.limit <int>`**
 
 Changes the default limit on the number of currently active audiences. The default is 20, sorted in order of priority.
+
+**`altis.analytics.elasticsearch.timeout <int>`**
+
+Filter the amount of seconds to wait for a repsonse from Elasticsearch. The default value is `20` seconds. The minimum value is `5` seconds and the maximum is `30` seconds.
