@@ -38,7 +38,7 @@ function bootstrap() {
  * @return array
  */
 function get_config() : array {
-	return get_platform_config()['modules']['analytics']['google-tag-manager'];
+	return get_platform_config()['modules']['analytics']['google-tag-manager'] ?? [];
 }
 
 /**
