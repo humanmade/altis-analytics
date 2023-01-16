@@ -6,7 +6,6 @@
 namespace Altis\Analytics\Native;
 
 use Altis;
-use Altis\Analytics\Experiments;
 use Altis\Module;
 
 /**
